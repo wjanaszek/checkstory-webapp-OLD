@@ -7,34 +7,49 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoriesComponent } from './stories/stories.component';
 import { MdFormFieldModule } from '@angular/material';
+import { LoginDialogComponent } from './dialogs/login-dialog/login-dialog.component';
+import { RegisterDialogComponent } from './dialogs/register-dialog/register-dialog.component';
+import { UserService } from './services/user-service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialsModule } from './materials/materials.module';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    StoriesComponent
+    StoriesComponent,
+    LoginDialogComponent,
+    RegisterDialogComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MaterialsModule,
     FormsModule,
     MdFormFieldModule,
     RouterModule.forRoot([
       {
-        path: '',
-        redirectTo: '/dashboard',
-        pathMatch: 'full'
-      },
-      {
         path: 'dashboard',
-        component: DashboardComponent
+        component: DashboardComponent,
+        canActivate: [AuthGuard]
       },
       {
         path: 'stories',
-        component: StoriesComponent
+        component: StoriesComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'login',
+        component: LoginDialogComponent
+      },
+      {
+        path: 'register',
+        component: RegisterDialogComponent
       }
     ])
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [ UserService ],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
