@@ -8,7 +8,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA
   templateUrl: './login-dialog.component.html',
   styleUrls: ['./login-dialog.component.css']
 })
-export class LoginDialogComponent implements OnInit {
+export class LoginDialogComponent {
 
   loginFormControl = new FormControl('', [
     Validators.required,
@@ -16,8 +16,5 @@ export class LoginDialogComponent implements OnInit {
     ]);
 
   constructor() { }
-
-  ngOnInit() {
-  }
 
 }

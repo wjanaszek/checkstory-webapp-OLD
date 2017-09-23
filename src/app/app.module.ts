@@ -12,7 +12,8 @@ import { RegisterDialogComponent } from './dialogs/register-dialog/register-dial
 import { UserService } from './services/user-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialsModule } from './materials/materials.module';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth.guard';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AuthGuard } from './auth.guard';
     DashboardComponent,
     StoriesComponent,
     LoginDialogComponent,
-    RegisterDialogComponent
+    RegisterDialogComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,10 @@ import { AuthGuard } from './auth.guard';
     FormsModule,
     MdFormFieldModule,
     RouterModule.forRoot([
+      {
+        path: '',
+        component: AppComponent
+      },
       {
         path: 'dashboard',
         component: DashboardComponent,
