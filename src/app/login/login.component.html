@@ -3,20 +3,20 @@
     <md-form-field class="full-width">
       <input mdInput placeholder="Login" formControlName="login">
     </md-form-field>
-    <!--<div class="error" *ngIf="user.controls['login'].errors && user.controls['login'].touched">-->
-      <!--Login is required-->
-    <!--</div>-->
+    <div class="error" *ngIf="userForm.get('login').errors && userForm.get('login').touched">
+      Login is required
+    </div>
   </div>
   <div class="col-md-12">
     <md-form-field class="full-width">
       <input type="password" mdInput placeholder="Password" formControlName="password" autocomplete="false">
     </md-form-field>
-    <!--<div class="error" *ngIf="user.get('password').hasError('required') && user.get('password').touched">-->
-      <!--Password is required-->
-    <!--</div>-->
+    <div class="error" *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched">
+      Password is required
+    </div>
   </div>
   <div class="col-md-12">
     <a href="" >Forgot password</a>
-    <button md-button type="submit">Login</button>
+    <button md-button type="submit" [disabled]="userForm.invalid || userForm.pristine">Login</button>
   </div>
 </form>
