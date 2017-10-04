@@ -3,7 +3,6 @@ import {
   RequestOptions
 } from '@angular/http';
 import { MockBackend, MockConnection } from '@angular/http/testing';
-import { setTimeout } from 'timers';
 
 export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOptions, realBackend: XHRBackend) {
   // array in local storage for registred users
@@ -145,3 +144,10 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
 
   return new Http(backend, options);
 }
+
+export let fakeBackendProvider = {
+  // use fake backend in place of Http service for backend-less development
+  provide: Http,
+  useFactory: fakeBackendFactory,
+  deps: [MockBackend, BaseRequestOptions, XHRBackend]
+};
