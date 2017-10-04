@@ -1,3 +1,24 @@
-<p>
-  login works!
-</p>
+<form novalidate (ngSubmit)="login(user)" [formGroup]="user">
+  <div class="col-md-12">
+    <md-form-field class="full-width">
+      <input mdInput placeholder="Login">
+    </md-form-field>
+    <!--<div class="error" *ngIf="user.controls['login'].errors && user.controls['login'].touched">-->
+      <!--Login is required-->
+    <!--</div>-->
+  </div>
+  <div class="col-md-12">
+    <md-form-field class="full-width">
+      <input type="password" mdInput placeholder="Password">
+    </md-form-field>
+    <!--<div class="error" *ngIf="user.get('password').hasError('required') && user.get('password').touched">-->
+      <!--Password is required-->
+    <!--</div>-->
+  </div>
+  <div class="col-md-12">
+    <a href="" >Forgot password</a>
+    <md-card-actions align="end">
+      <button md-button type="submit">Login</button>
+    </md-card-actions>
+  </div>
+</form>

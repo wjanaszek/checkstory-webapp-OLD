@@ -1,3 +1,33 @@
-<p>
-  register works!
-</p>
+<form novalidate (ngSubmit)="submit(registerForm)" [formGroup]="registerForm">
+  <div class="col-md-12">
+    <md-form-field class="full-width">
+      <input mdInput placeholder="Login">
+    </md-form-field>
+    <!--<div class="error" *ngIf="user.controls['login'].errors && user.controls['login'].touched">-->
+    <!--Login is required-->
+    <!--</div>-->
+  </div>
+  <div class="col-md-12">
+    <md-form-field class="full-width">
+      <input type="email" mdInput placeholder="Email">
+    </md-form-field>
+  </div>
+  <div class="col-md-12">
+    <md-form-field class="full-width">
+      <input type="password" mdInput placeholder="Password">
+    </md-form-field>
+    <!--<div class="error" *ngIf="user.get('password').hasError('required') && user.get('password').touched">-->
+    <!--Password is required-->
+    <!--</div>-->
+  </div>
+  <div class="col-md-12">
+    <md-form-field class="full-width">
+      <input type="password" mdInput placeholder="Confirm password">
+    </md-form-field>
+  </div>
+  <div class="col-md-12">
+    <md-card-actions align="end">
+      <button md-button type="submit">Sign up</button>
+    </md-card-actions>
+  </div>
+</form>
