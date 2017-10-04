@@ -1,7 +1,7 @@
-<form novalidate (ngSubmit)="login(user)" [formGroup]="user">
+<form (ngSubmit)="login()" [formGroup]="userForm">
   <div class="col-md-12">
     <md-form-field class="full-width">
-      <input mdInput placeholder="Login">
+      <input mdInput placeholder="Login" formControlName="login">
     </md-form-field>
     <!--<div class="error" *ngIf="user.controls['login'].errors && user.controls['login'].touched">-->
       <!--Login is required-->
@@ -9,7 +9,7 @@
   </div>
   <div class="col-md-12">
     <md-form-field class="full-width">
-      <input type="password" mdInput placeholder="Password">
+      <input type="password" mdInput placeholder="Password" formControlName="password" autocomplete="false">
     </md-form-field>
     <!--<div class="error" *ngIf="user.get('password').hasError('required') && user.get('password').touched">-->
       <!--Password is required-->
@@ -17,8 +17,6 @@
   </div>
   <div class="col-md-12">
     <a href="" >Forgot password</a>
-    <md-card-actions align="end">
-      <button md-button type="submit">Login</button>
-    </md-card-actions>
+    <button md-button type="submit">Login</button>
   </div>
 </form>

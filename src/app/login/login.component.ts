@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User } from '../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -10,10 +11,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   model: any = {};
-  loading: boolean = false;
+  loading = false;
   returnUrl: string;
 
-  user: FormGroup;
+  userForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -24,8 +25,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // create form
-    this.user = this.fb.group({
-      name: ['', [Validators.required]],
+    this.userForm = this.fb.group({
+      login: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
 
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    console.log('logging: ' + this.userForm.get('login').value + ', ' + this.userForm.get('password').value);
     this.loading = true;
     // this.authenticationService.login(this.model.login, this.model.password)
     //   .subscribe(
@@ -47,7 +49,7 @@ export class LoginComponent implements OnInit {
     //       this.loading = false;
     //     }
     //   );
-    this.authenticationService.login(this.user.controls['login'].value, this.user.controls['password'].value)
+    this.authenticationService.login(this.userForm.get('login').value, this.userForm.get('password').value)
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
