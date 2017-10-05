@@ -11,6 +11,9 @@
     <md-form-field class="full-width">
       <input type="email" mdInput placeholder="Email" formControlName="email">
     </md-form-field>
+    <div class="error" *ngIf="registerForm.get('email').errors && registerForm.get('email').touched">
+      Email is required
+    </div>
   </div>
   <div class="col-md-12">
     <md-form-field class="full-width">
