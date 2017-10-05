@@ -17,7 +17,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { MdButtonModule, MdFormFieldModule, MatInputModule } from '@angular/material';
+import { MdButtonModule, MdFormFieldModule, MatInputModule, MatButtonModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -34,8 +34,8 @@ import { MdButtonModule, MdFormFieldModule, MatInputModule } from '@angular/mate
     MaterialsModule,
     FormsModule,
     MdFormFieldModule,
-    MdButtonModule,
     MatInputModule,
+    MatButtonModule,
     ReactiveFormsModule,
     HttpModule,
     RouterModule.forRoot([

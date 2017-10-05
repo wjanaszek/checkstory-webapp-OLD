@@ -1,29 +1,29 @@
-<form novalidate (ngSubmit)="submit()" [formGroup]="registerForm">
-  <div class="col-md-12">
-    <md-form-field class="full-width">
+<form class="register_page" novalidate (ngSubmit)="submit()" [formGroup]="registerForm">
+  <div class="col-md-12 register_field">
+    <md-form-field class="login full-width">
       <input mdInput placeholder="Login" formControlName="login">
     </md-form-field>
-    <div class="error" *ngIf="registerForm.get('login').errors && registerForm.get('login').touched">
+    <div class="validation_error" *ngIf="registerForm.get('login').errors && registerForm.get('login').touched">
       Login is required
     </div>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-12 register_field">
     <md-form-field class="full-width">
       <input type="email" mdInput placeholder="Email" formControlName="email">
     </md-form-field>
-    <div class="error" *ngIf="registerForm.get('email').errors && registerForm.get('email').touched">
+    <div class="validation_error" *ngIf="registerForm.get('email').errors && registerForm.get('email').touched">
       Email is required
     </div>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-12 register_field">
     <md-form-field class="full-width">
       <input type="password" mdInput placeholder="Password" formControlName="password">
     </md-form-field>
-    <div class="error" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">
+    <div class="validation_error" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">
       Password is required
     </div>
   </div>
-  <div class="col-md-12">
+  <div class="col-md-12 register_field">
     <md-form-field class="full-width">
       <input type="password" mdInput placeholder="Confirm password" autocomplete="false" formControlName="confirmPassword">
     </md-form-field>
@@ -33,7 +33,9 @@
   </div>
   <div class="col-md-12">
     <md-card-actions align="end">
-      <button md-button type="submit" [disabled]="registerForm.invalid || registerForm.pristine">Sign up</button>
+      <button md-button type="submit" class="signup_btn" [disabled]="registerForm.invalid || registerForm.pristine">
+        Sign up
+      </button>
     </md-card-actions>
   </div>
 </form>

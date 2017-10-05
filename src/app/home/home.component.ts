@@ -3,14 +3,16 @@ import { User } from '../models/user.model';
 import { UserService } from '../services/user-service';
 
 @Component({
-  moduleId: module.id,
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html'
 })
 export class HomeComponent implements OnInit {
 
   currentUser: User;
   users: User[] = [];
+
+  registerFormVisible = false;
+  loginFormVisible = false;
 
   constructor(private userService: UserService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -28,4 +30,13 @@ export class HomeComponent implements OnInit {
     this.userService.getAll().subscribe(users => { this.users = users; });
   }
 
+  showRegisterForm() {
+    this.registerFormVisible = true;
+    this.loginFormVisible = false;
+  }
+
+  showLoginForm() {
+    this.loginFormVisible = true;
+    this.registerFormVisible = false;
+  }
 }
