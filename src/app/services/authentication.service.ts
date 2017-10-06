@@ -27,7 +27,7 @@ export class AuthenticationService {
   }
 
   register(login: string, email: string, password: string) {
-    return this.http.post('/api/users', JSON.stringify({ login: login, password: password }))
+    return this.http.post('/api/users', JSON.stringify({ login: login, email: email, password: password }))
       .map((response: Response) => {
         const user = response.json();
         // login registered user

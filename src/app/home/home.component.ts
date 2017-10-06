@@ -29,10 +29,10 @@ export class HomeComponent implements OnInit {
   }
 
   showRegisterForm() {
-    this.router.navigateByUrl('/register');
+    this.router.navigate(['/register']);
   }
 
   showLoginForm() {
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login']);
   }
 }
