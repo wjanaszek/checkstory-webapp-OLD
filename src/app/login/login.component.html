@@ -3,32 +3,30 @@
     <i class="material-icons">keyboard_backspace</i>
   </button>
 </div>
-<!--<div [@visibilityChanged]="visibility">-->
-  <form class="login_page" (ngSubmit)="login()" [formGroup]="loginForm">
-    <div class="back_button">
+<form class="login_page" (ngSubmit)="login()" [formGroup]="loginForm">
+  <div class="back_button">
 
+  </div>
+  <div class="col-md-12">
+    <md-form-field class="full-width">
+      <input mdInput placeholder="Login" formControlName="login">
+    </md-form-field>
+    <div class="validation_error" *ngIf="loginForm.get('login').errors && loginForm.get('login').touched">
+      <i class="material-icons">error</i> Login is required
     </div>
-    <div class="col-md-12">
-      <md-form-field class="full-width">
-        <input mdInput placeholder="Login" formControlName="login">
-      </md-form-field>
-      <div class="validation_error" *ngIf="loginForm.get('login').errors && loginForm.get('login').touched">
-        <i class="material-icons">error</i> Login is required
-      </div>
+  </div>
+  <div class="col-md-12">
+    <md-form-field class="full-width">
+      <input type="password" mdInput placeholder="Password" formControlName="password" autocomplete="false">
+    </md-form-field>
+    <div class="validation_error" *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">
+      <i class="material-icons">error</i> Password is required
     </div>
-    <div class="col-md-12">
-      <md-form-field class="full-width">
-        <input type="password" mdInput placeholder="Password" formControlName="password" autocomplete="false">
-      </md-form-field>
-      <div class="validation_error" *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">
-        <i class="material-icons">error</i> Password is required
-      </div>
-    </div>
-    <div class="col-md-12 login_actions">
-      <a href="" class="forgot_pswd_btn">Forgot password</a>
-      <button md-button type="submit" class="signup_btn" [disabled]="loginForm.invalid || loginForm.pristine">
-        Login
-      </button>
-    </div>
-  </form>
-<!--</div>-->
+  </div>
+  <div class="col-md-12 login_actions">
+    <a href="" class="forgot_pswd_btn">Forgot password</a>
+    <button md-button type="submit" class="signup_btn" [disabled]="loginForm.invalid || loginForm.pristine">
+      Login
+    </button>
+  </div>
+</form>

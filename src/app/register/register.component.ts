@@ -3,11 +3,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidation } from '../shared/password.validation';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
+import { fadeInAnimation } from '../animations/fadeInAnimation';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  animations: []
+  animations: [ fadeInAnimation ],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class RegisterComponent implements OnInit {
 

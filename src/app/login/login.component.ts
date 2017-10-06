@@ -2,27 +2,18 @@ import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { fadeInAnimation } from '../animations/fadeInAnimation';
 // import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  // animations: [
-  //   trigger('visibilityChanged', [
-  //     state('shown', style({ opacity: 1 })),
-  //     state('hidden', style({ opacity: 0 })),
-  //     transition('shown => hidden', animate('.5s')),
-  //     transition('hidden => shown', animate('.4s'))
-  //   ])
-  // ]
+  animations: [ fadeInAnimation ],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class LoginComponent implements OnInit {
   loading = false;
   returnUrl: string;
-
-  // @Input()
-  // isVisible: boolean = false;
-  // visibility = 'hidden';
 
   loginForm: FormGroup;
 

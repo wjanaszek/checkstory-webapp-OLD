@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user-service';
 import { Router } from '@angular/router';
+import { fadeInAnimation } from '../animations/fadeInAnimation';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  animations: [ fadeInAnimation ],
+  host: { '[@fadeInAnimation]': '' }
 })
 export class HomeComponent implements OnInit {
 
