@@ -1,9 +1,9 @@
-<form (ngSubmit)="login()" [formGroup]="userForm">
+<form class="login_page" (ngSubmit)="login()" [formGroup]="userForm">
   <div class="col-md-12">
     <md-form-field class="full-width">
       <input mdInput placeholder="Login" formControlName="login">
     </md-form-field>
-    <div class="error" *ngIf="userForm.get('login').errors && userForm.get('login').touched">
+    <div class="validation_error" *ngIf="userForm.get('login').errors && userForm.get('login').touched">
       Login is required
     </div>
   </div>
@@ -11,12 +11,14 @@
     <md-form-field class="full-width">
       <input type="password" mdInput placeholder="Password" formControlName="password" autocomplete="false">
     </md-form-field>
-    <div class="error" *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched">
+    <div class="validation_error" *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched">
       Password is required
     </div>
   </div>
-  <div class="col-md-12">
-    <a href="" >Forgot password</a>
-    <button md-button type="submit" [disabled]="userForm.invalid || userForm.pristine">Login</button>
+  <div class="col-md-12 login_actions">
+    <a href="" class="forgot_pswd_btn">Forgot password</a>
+    <button md-button type="submit" class="signup_btn" [disabled]="userForm.invalid || userForm.pristine">
+      Login
+    </button>
   </div>
 </form>

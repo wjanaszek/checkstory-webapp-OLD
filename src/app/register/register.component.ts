@@ -5,7 +5,6 @@ import { PasswordValidation } from '../shared/password.validation';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
   animations: []
 })
 export class RegisterComponent implements OnInit {
