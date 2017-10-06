@@ -1,3 +1,8 @@
 .full-width {
   width: 50%;
 }
+
+.back_btn {
+  float: left;
+  size: 30px;
+}

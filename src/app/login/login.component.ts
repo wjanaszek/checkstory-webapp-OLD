@@ -65,4 +65,7 @@ export class LoginComponent implements OnInit {
       );
   }
 
+  getBack() {
+    this.router.navigateByUrl('/home');
+  }
 }
