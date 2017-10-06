@@ -25,4 +25,18 @@ export class AuthenticationService {
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
   }
+
+  register(login: string, email: string, password: string) {
+    return this.http.post('/api/users', JSON.stringify({ login: login, password: password }))
+      .map((response: Response) => {
+        const user = response.json();
+        // login registered user
+        if (user && user.token) {
+          // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('currentUser', JSON.stringify(user));
+        }
+
+        return user;
+      });
+  }
 }

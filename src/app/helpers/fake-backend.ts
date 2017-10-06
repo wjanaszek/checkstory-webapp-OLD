@@ -83,7 +83,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
 
         // validation
         const duplicateUser = users.filter(user => {
-          return user.login === newUser.login
+          return user.login === newUser.login;
         }).length;
         if (duplicateUser) {
           return connection.mockError(new Error('Login "' + newUser.login + '" already in use'));
