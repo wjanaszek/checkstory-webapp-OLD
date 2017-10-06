@@ -1,0 +1,32 @@
+.login_page .login_actions {
+  display: inline-block;
+  .forgot_pswd_btn {
+    margin-right: 5px;
+  }
+  .signup_btn {
+    margin-left: 5px;
+  }
+}
+
+.login_page .login_actions .forgot_pswd_btn {
+  margin-right: 5px;
+  width: 25%;
+}
+
+.login_page .login_actions .signup_btn {
+  margin-left: 15px;
+  width: 18%;
+}
+
+.register_page .register_field {
+
+}
+
+.register_page .validation_error, .login_page .validation_error {
+  font-weight: bold;
+  color: red;
+}
+
+.register_page .signup_btn {
+  width: 50%;
+}
