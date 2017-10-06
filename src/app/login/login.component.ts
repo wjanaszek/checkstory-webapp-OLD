@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   // isVisible: boolean = false;
   // visibility = 'hidden';
 
-  userForm: FormGroup;
+  loginForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     // create form
-    this.userForm = this.fb.group({
+    this.loginForm = this.fb.group({
       login: ['', [Validators.required]],
       password: ['', [Validators.required]]
     });
@@ -52,9 +52,9 @@ export class LoginComponent implements OnInit {
   // }
 
   login() {
-    console.log('logging: ' + this.userForm.get('login').value + ', ' + this.userForm.get('password').value);
+    console.log('logging: ' + this.loginForm.get('login').value + ', ' + this.loginForm.get('password').value);
     this.loading = true;
-    this.authenticationService.login(this.userForm.get('login').value, this.userForm.get('password').value)
+    this.authenticationService.login(this.loginForm.get('login').value, this.loginForm.get('password').value)
       .subscribe(
         data => {
           this.router.navigate([this.returnUrl]);
