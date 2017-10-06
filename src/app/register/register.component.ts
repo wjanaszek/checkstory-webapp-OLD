@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
       this.registerForm.get('email').value,
       this.registerForm.get('password').value
     ).subscribe(data => {
-        this.router.navigateByUrl('/home');   //TODO change for something better
+        this.router.navigate(['/welcome_page']);   //TODO change for something better (?)
       },
       error => {
         console.log('error during registration occured');

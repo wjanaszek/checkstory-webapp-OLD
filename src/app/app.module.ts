@@ -18,6 +18,7 @@ import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { MdFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule } from '@angular/material';
 import { routing } from './app.routes';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { routing } from './app.routes';
     StoriesComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    WelcomeComponent
   ],
   imports: [
     routing,
