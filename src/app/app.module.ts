@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
 import { StoriesComponent } from './stories/stories.component';
 import { UserService } from './services/user-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +17,7 @@ import { fakeBackendProvider } from './helpers/fake-backend';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { MdFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule } from '@angular/material';
+import { routing } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -29,6 +29,7 @@ import { MdFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule } 
     RegisterComponent
   ],
   imports: [
+    routing,
     BrowserModule,
     BrowserAnimationsModule,
     MaterialsModule,
@@ -38,31 +39,7 @@ import { MdFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule } 
     MatButtonModule,
     MatTooltipModule,
     ReactiveFormsModule,
-    HttpModule,
-    RouterModule.forRoot([
-      {
-        path: '',
-        component: AppComponent
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'stories',
-        component: StoriesComponent,
-        canActivate: [AuthGuard]
-      },
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'register',
-        component: RegisterComponent
-      }
-    ])
+    HttpModule
   ],
   providers: [
     UserService,

@@ -4,7 +4,7 @@
       <input mdInput placeholder="Login" formControlName="login">
     </md-form-field>
     <div class="validation_error" *ngIf="registerForm.get('login').errors && registerForm.get('login').touched">
-      Login is required
+      <i class="material-icons">error</i> Login is required
     </div>
   </div>
   <div class="col-md-12 register_field">
@@ -12,7 +12,7 @@
       <input type="email" mdInput placeholder="Email" formControlName="email">
     </md-form-field>
     <div class="validation_error" *ngIf="registerForm.get('email').errors && registerForm.get('email').touched">
-      Email is required
+      <i class="material-icons">error</i> Email is required
     </div>
   </div>
   <div class="col-md-12 register_field">
@@ -20,16 +20,18 @@
       <input type="password" mdInput placeholder="Password" formControlName="password">
     </md-form-field>
     <div class="validation_error" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">
-      Password is required
+      <i class="material-icons">error</i> Password is required
     </div>
   </div>
   <div class="col-md-12 register_field">
     <md-form-field class="full-width">
       <input type="password" mdInput placeholder="Confirm password" autocomplete="false" formControlName="confirmPassword">
     </md-form-field>
-    <div class="alert alert-danger" *ngIf="registerForm.get('confirmPassword').errors
+    <div class="validation_error" *ngIf="registerForm.get('confirmPassword').errors
                                             && registerForm.get('confirmPassword').touched
-                                            && registerForm.get('password').touched">Password not match</div>
+                                            && registerForm.get('password').touched">
+      <i class="material-icons">error</i> Password not match
+    </div>
   </div>
   <div class="col-md-12">
     <md-card-actions align="end">

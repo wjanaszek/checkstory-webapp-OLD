@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { UserService } from '../services/user-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,10 +12,7 @@ export class HomeComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
 
-  registerFormVisible = false;
-  loginFormVisible = false;
-
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -31,12 +29,10 @@ export class HomeComponent implements OnInit {
   }
 
   showRegisterForm() {
-    this.registerFormVisible = true;
-    this.loginFormVisible = false;
+    this.router.navigateByUrl('/register');
   }
 
   showLoginForm() {
-    this.loginFormVisible = true;
-    this.registerFormVisible = false;
+    this.router.navigateByUrl('/login');
   }
 }

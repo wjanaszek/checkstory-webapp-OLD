@@ -1,24 +1,29 @@
-<form class="login_page" (ngSubmit)="login()" [formGroup]="userForm">
-  <div class="col-md-12">
-    <md-form-field class="full-width">
-      <input mdInput placeholder="Login" formControlName="login">
-    </md-form-field>
-    <div class="validation_error" *ngIf="userForm.get('login').errors && userForm.get('login').touched">
-      Login is required
+<!--<div [@visibilityChanged]="visibility">-->
+  <form class="login_page" (ngSubmit)="login()" [formGroup]="userForm">
+    <div class="back_button">
+
     </div>
-  </div>
-  <div class="col-md-12">
-    <md-form-field class="full-width">
-      <input type="password" mdInput placeholder="Password" formControlName="password" autocomplete="false">
-    </md-form-field>
-    <div class="validation_error" *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched">
-      Password is required
+    <div class="col-md-12">
+      <md-form-field class="full-width">
+        <input mdInput placeholder="Login" formControlName="login">
+      </md-form-field>
+      <div class="validation_error" *ngIf="userForm.get('login').errors && userForm.get('login').touched">
+        <i class="material-icons">error</i> Login is required
+      </div>
     </div>
-  </div>
-  <div class="col-md-12 login_actions">
-    <a href="" class="forgot_pswd_btn">Forgot password</a>
-    <button md-button type="submit" class="signup_btn" [disabled]="userForm.invalid || userForm.pristine">
-      Login
-    </button>
-  </div>
-</form>
+    <div class="col-md-12">
+      <md-form-field class="full-width">
+        <input type="password" mdInput placeholder="Password" formControlName="password" autocomplete="false">
+      </md-form-field>
+      <div class="validation_error" *ngIf="userForm.get('password').hasError('required') && userForm.get('password').touched">
+        <i class="material-icons">error</i> Password is required
+      </div>
+    </div>
+    <div class="col-md-12 login_actions">
+      <a href="" class="forgot_pswd_btn">Forgot password</a>
+      <button md-button type="submit" class="signup_btn" [disabled]="userForm.invalid || userForm.pristine">
+        Login
+      </button>
+    </div>
+  </form>
+<!--</div>-->

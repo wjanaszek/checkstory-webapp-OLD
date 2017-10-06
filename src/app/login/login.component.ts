@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
-  templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  // animations: [
+  //   trigger('visibilityChanged', [
+  //     state('shown', style({ opacity: 1 })),
+  //     state('hidden', style({ opacity: 0 })),
+  //     transition('shown => hidden', animate('.5s')),
+  //     transition('hidden => shown', animate('.4s'))
+  //   ])
+  // ]
 })
 export class LoginComponent implements OnInit {
   loading = false;
   returnUrl: string;
+
+  // @Input()
+  // isVisible: boolean = false;
+  // visibility = 'hidden';
 
   userForm: FormGroup;
 
@@ -33,6 +46,10 @@ export class LoginComponent implements OnInit {
     // get return url from route parameters or default to '/'
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
+
+  // ngOnChanges() {
+  //   this.visibility = this.isVisible ? 'shown' : 'hidden';
+  // }
 
   login() {
     console.log('logging: ' + this.userForm.get('login').value + ', ' + this.userForm.get('password').value);
