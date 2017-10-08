@@ -17,20 +17,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
   }
 
-  private goHome() {
-    this.router.navigate(['dashboard']);
-  }
-
-  private goMyAccount() {
-    this.router.navigate(['dashboard', 'myaccount']);
-  }
-
   private goLogout() {
     this.authenticationService.logout();
-    this.router.navigate(['/home']);
-  }
-
-  private goStories() {
-    this.router.navigate(['dashboard']);
   }
 }

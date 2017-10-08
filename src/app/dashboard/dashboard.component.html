@@ -1,22 +1,18 @@
 <nav class="mat-tab-nav-bar">
-  <a class="nav-link home" (click)="goHome()" >
+  <a class="nav-link home" [routerLink]="['/dashboard']" >
     Checkstory
   </a>
   <md-list>
     <md-list-item [routerLinkActive]="['active']">
-      <a class="nav-link" (click)="goMyAccount()">
+      <a class="nav-link" [routerLink]="['myaccount']">
         My account
       </a>
     </md-list-item>
     <md-list-item [routerLinkActive]="['active']">
-      <a class="nav-link" (click)="goStories()">
-        Stories
-      </a>
-    </md-list-item>
-    <md-list-item [routerLinkActive]="['active']">
-      <a class="nav-link" (click)="goLogout()">
+      <a class="nav-link" (click)="goLogout()" [routerLink]="['/home']">
         Logout
       </a>
     </md-list-item>
   </md-list>
 </nav>
+<router-outlet></router-outlet>
