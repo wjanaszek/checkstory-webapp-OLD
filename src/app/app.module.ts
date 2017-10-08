@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { ConfirmDialogComponent, DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoriesComponent } from './stories/stories.component';
 import { UserService } from './services/user-service';
@@ -10,18 +10,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialsModule } from './materials/materials.module';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './home/login/login.component';
+import { RegisterComponent } from './home/register/register.component';
 import { AuthenticationService } from './services/authentication.service';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { MdFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule, MatListModule } from '@angular/material';
+import { MdFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule, MatListModule, MatDialogModule } from '@angular/material';
 import { routing } from './app.routes';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { BarComponent } from './bar/bar.component';
-import { MyAccountComponent } from './myaccount/myaccount.component';
-import { StoryDetailComponent } from './story-detail/story-detail.component';
+import { MyAccountComponent } from './dashboard/myaccount/myaccount.component';
+import { StoryDetailComponent } from './dashboard/story-detail/story-detail.component';
+import { AboutComponent } from './dashboard/about/about.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +32,10 @@ import { StoryDetailComponent } from './story-detail/story-detail.component';
     LoginComponent,
     RegisterComponent,
     WelcomeComponent,
-    BarComponent,
     MyAccountComponent,
-    StoryDetailComponent
+    StoryDetailComponent,
+    ConfirmDialogComponent,
+    AboutComponent
   ],
   imports: [
     routing,
@@ -47,8 +48,12 @@ import { StoryDetailComponent } from './story-detail/story-detail.component';
     MatButtonModule,
     MatTooltipModule,
     MatListModule,
+    MatDialogModule,
     ReactiveFormsModule,
     HttpModule
+  ],
+  exports: [
+    ConfirmDialogComponent
   ],
   providers: [
     UserService,
@@ -56,6 +61,9 @@ import { StoryDetailComponent } from './story-detail/story-detail.component';
     fakeBackendProvider,
     MockBackend,
     BaseRequestOptions
+  ],
+  entryComponents: [
+    ConfirmDialogComponent
   ],
   bootstrap: [ AppComponent ]
 })

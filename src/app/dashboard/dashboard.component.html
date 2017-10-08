@@ -1,18 +1,25 @@
-<nav class="mat-tab-nav-bar">
-  <a class="nav-link home" [routerLink]="['/dashboard']" >
+<nav class="navbar">
+  <a class="navbar-brand home" [routerLink]="['/dashboard']" >
     Checkstory
   </a>
-  <md-list>
-    <md-list-item [routerLinkActive]="['active']">
-      <a class="nav-link" [routerLink]="['myaccount']">
-        My account
-      </a>
-    </md-list-item>
-    <md-list-item [routerLinkActive]="['active']">
-      <a class="nav-link" (click)="goLogout()" [routerLink]="['/home']">
-        Logout
-      </a>
-    </md-list-item>
-  </md-list>
+  <div class="navbar-cont">
+    <ul class="nav navbar-nav">
+      <li>
+        <a [routerLink]="['myaccount']" [routerLinkActive]="['active']">
+          MyAccount
+        </a>
+      </li>
+      <li>
+        <a (click)="openConfirmDialog()" [routerLinkActive]="['active']">
+          Logout
+        </a>
+      </li>
+      <li>
+        <a [routerLink]="['about']" [routerLinkActive]="['active']">
+          About
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
 <router-outlet></router-outlet>

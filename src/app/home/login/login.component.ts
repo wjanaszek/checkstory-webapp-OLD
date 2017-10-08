@@ -1,8 +1,8 @@
 import {Component, Input, OnChanges, OnInit} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { fadeInAnimation } from '../animations/fadeInAnimation';
+import { fadeInAnimation } from '../../shared/animations/fadeInAnimation';
 // import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
