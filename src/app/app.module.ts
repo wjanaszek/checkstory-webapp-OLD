@@ -4,10 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ConfirmDialogComponent, DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StoriesComponent } from './stories/stories.component';
+import { StoriesComponent } from './dashboard/stories/stories.component';
 import { UserService } from './services/user-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialsModule } from './materials/materials.module';
 import { AuthGuard } from './guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
@@ -18,7 +17,7 @@ import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { MdFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule, MatListModule, MatDialogModule } from '@angular/material';
 import { routing } from './app.routes';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { WelcomeComponent } from './home/welcome/welcome.component';
 import { MyAccountComponent } from './dashboard/myaccount/myaccount.component';
 import { StoryDetailComponent } from './dashboard/story-detail/story-detail.component';
 import { AboutComponent } from './dashboard/about/about.component';
@@ -41,7 +40,6 @@ import { AboutComponent } from './dashboard/about/about.component';
     routing,
     BrowserModule,
     BrowserAnimationsModule,
-    MaterialsModule,
     FormsModule,
     MdFormFieldModule,
     MatInputModule,
