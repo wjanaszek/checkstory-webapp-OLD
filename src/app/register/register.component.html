@@ -1,8 +1,12 @@
 <div class="back_btn">
-  <button md-button type="button" (click)="getBack()">
+  <button md-button type="button" (click)="goBack()">
     <i class="material-icons">keyboard_backspace</i>
   </button>
 </div>
+<md-list>
+  <h3 md-subheader>Register</h3>
+  <md-divider></md-divider>
+</md-list>
 <form class="register_page" novalidate (ngSubmit)="submit()" [formGroup]="registerForm">
   <div class="col-md-12 register_field">
     <md-form-field class="login full-width">

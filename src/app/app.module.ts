@@ -16,9 +16,12 @@ import { AuthenticationService } from './services/authentication.service';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { MdFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule } from '@angular/material';
+import { MdFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule, MatListModule } from '@angular/material';
 import { routing } from './app.routes';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { BarComponent } from './bar/bar.component';
+import { MyAccountComponent } from './myaccount/myaccount.component';
+import { StoryDetailComponent } from './story-detail/story-detail.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,10 @@ import { WelcomeComponent } from './welcome/welcome.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    BarComponent,
+    MyAccountComponent,
+    StoryDetailComponent
   ],
   imports: [
     routing,
@@ -40,6 +46,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
     MatInputModule,
     MatButtonModule,
     MatTooltipModule,
+    MatListModule,
     ReactiveFormsModule,
     HttpModule
   ],

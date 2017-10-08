@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit {
       });
   }
 
-  getBack() {
+  goBack() {
     this.router.navigateByUrl('/home');
   }
 }

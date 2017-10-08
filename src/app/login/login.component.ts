@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.loginForm.get('login').value, this.loginForm.get('password').value)
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          this.router.navigate(['dashboard']);
         },
         error => {
           this.loading = false;
@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
       );
   }
 
-  getBack() {
+  goBack() {
     this.router.navigateByUrl('/home');
   }
 }
