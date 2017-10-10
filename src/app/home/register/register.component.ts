@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
   }
 
   submit() {
-    console.log('submit');
+    console.log('submit: login = ' + this.registerForm.get('login').value + ', pswd = ' + this.registerForm.get('password').value);
     this.authenticationService.register(
       this.registerForm.get('login').value,
       this.registerForm.get('email').value,
