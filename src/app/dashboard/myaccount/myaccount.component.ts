@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { fadeInAnimation } from '../../shared/animations/fadeInAnimation';
 import { Router } from '@angular/router';
 import { MD_DIALOG_DATA, MdDialog, MdDialogRef } from '@angular/material';
@@ -24,10 +24,15 @@ export class MyAccountComponent implements OnInit {
   }
 
   openChangePasswordDialog() {
-    const dialogRef = this.changePasswordDialog.open(ChangePasswordDialogComponent);
+    const dialogRef = this.changePasswordDialog.open(ChangePasswordDialogComponent, {
+      data: {
+        disableClose: true
+      }
+    });
+  }
 
-    dialogRef.afterClosed()
-      .subscribe(result => result);
+  changePassword(event) {
+    console.log(event);
   }
 }
 
@@ -36,6 +41,15 @@ export class MyAccountComponent implements OnInit {
   templateUrl: './change.password.dialog.html'
 })
 export class ChangePasswordDialogComponent {
+
+  @Output()
+  changePasswordEvent = new EventEmitter<any>();
+  popupContent;
+
   constructor(@Inject(MD_DIALOG_DATA) public data: any, public dialogRef: MdDialogRef<ChangePasswordDialogComponent>) {
+  }
+
+  changePassword() {
+
   }
 }
