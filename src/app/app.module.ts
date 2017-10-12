@@ -18,7 +18,7 @@ import { MockBackend } from '@angular/http/testing';
 import { MdFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule, MatListModule, MatDialogModule } from '@angular/material';
 import { routing } from './app.routes';
 import { WelcomeComponent } from './home/welcome/welcome.component';
-import { MyAccountComponent } from './dashboard/myaccount/myaccount.component';
+import { ChangePasswordDialogComponent, MyAccountComponent } from './dashboard/myaccount/myaccount.component';
 import { StoryDetailComponent } from './dashboard/story-detail/story-detail.component';
 import { AboutComponent } from './dashboard/about/about.component';
 
@@ -34,7 +34,8 @@ import { AboutComponent } from './dashboard/about/about.component';
     MyAccountComponent,
     StoryDetailComponent,
     ConfirmDialogComponent,
-    AboutComponent
+    AboutComponent,
+    ChangePasswordDialogComponent
   ],
   imports: [
     routing,

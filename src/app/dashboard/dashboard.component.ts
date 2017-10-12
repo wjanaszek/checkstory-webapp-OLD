@@ -38,7 +38,7 @@ export class DashboardComponent implements OnInit {
 
 @Component({
   selector: 'app-confirm-dialog',
-  templateUrl: './confirm-dialog.html'
+  templateUrl: './confirm.dialog.html'
 })
 export class ConfirmDialogComponent {
   constructor(@Inject(MD_DIALOG_DATA) public data: any, public dialogRef: MdDialogRef<ConfirmDialogComponent>) { }
