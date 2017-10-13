@@ -62,7 +62,8 @@ import { AboutComponent } from './dashboard/about/about.component';
     BaseRequestOptions
   ],
   entryComponents: [
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    ChangePasswordDialogComponent
   ],
   bootstrap: [ AppComponent ]
 })
