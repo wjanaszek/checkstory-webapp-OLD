@@ -8,6 +8,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { MyAccountComponent } from './dashboard/myaccount/myaccount.component';
 import { StoryDetailComponent } from './dashboard/story-detail/story-detail.component';
 import { AboutComponent } from './dashboard/about/about.component';
+import { StoriesComponent } from './dashboard/stories/stories.component';
 
 export const routes: Routes = [
   {
@@ -36,7 +37,8 @@ export const routes: Routes = [
     component: DashboardComponent,
     children: [
       { path: 'myaccount', component: MyAccountComponent },
-      { path: 'stories/:id', component: StoryDetailComponent },
+      { path: 'story-list', component: StoriesComponent },
+      { path: 'story-details/:id', component: StoryDetailComponent },
       { path: 'about', component: AboutComponent }
     ]
   }

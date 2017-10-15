@@ -21,6 +21,7 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { ChangePasswordDialogComponent, MyAccountComponent } from './dashboard/myaccount/myaccount.component';
 import { StoryDetailComponent } from './dashboard/story-detail/story-detail.component';
 import { AboutComponent } from './dashboard/about/about.component';
+import { StoriesService } from './services/stories.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { AboutComponent } from './dashboard/about/about.component';
     AuthenticationService,
     fakeBackendProvider,
     MockBackend,
-    BaseRequestOptions
+    BaseRequestOptions,
+    StoriesService
   ],
   entryComponents: [
     ConfirmDialogComponent,

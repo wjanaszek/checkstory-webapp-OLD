@@ -1,3 +1,7 @@
-<p>
-  stories works!
-</p>
+<div>
+  <ul id="thumbnailsStoriesList">
+    <li *ngFor="let story of stories">
+      <img src="{{ story.url }}" class="tn" width="191" height="146" (click)="goToStoryDetails(story.id)">
+    </li>
+  </ul>
+</div>
