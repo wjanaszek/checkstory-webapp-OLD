@@ -1,41 +1,41 @@
-<div class="back_btn">
-  <button md-button type="button" (click)="goBack()">
+<div class="back_btn" matTooltip="Go home" [matTooltipShowDelay]="1000">
+  <button mat-button type="button" (click)="goBack()">
     <i class="material-icons">keyboard_backspace</i>
   </button>
 </div>
-<md-list>
-  <h3 md-subheader>Register</h3>
+<mat-list>
+  <h3 mat-subheader>Register</h3>
   <md-divider></md-divider>
-</md-list>
+</mat-list>
 <form class="register_page" novalidate (ngSubmit)="submit()" [formGroup]="registerForm">
   <div class="col-md-12 register_field">
-    <md-form-field class="login full-width">
-      <input mdInput placeholder="Login" formControlName="login">
-    </md-form-field>
+    <mat-form-field class="login full-width">
+      <input matInput placeholder="Login" formControlName="login">
+    </mat-form-field>
     <div class="validation_error" *ngIf="registerForm.get('login').errors && registerForm.get('login').touched">
       <i class="material-icons">error</i> Login is required
     </div>
   </div>
   <div class="col-md-12 register_field">
-    <md-form-field class="full-width">
-      <input type="email" mdInput placeholder="Email" formControlName="email">
-    </md-form-field>
+    <mat-form-field class="full-width">
+      <input type="email" matInput placeholder="Email" formControlName="email">
+    </mat-form-field>
     <div class="validation_error" *ngIf="registerForm.get('email').errors && registerForm.get('email').touched">
       <i class="material-icons">error</i> Email is required
     </div>
   </div>
   <div class="col-md-12 register_field">
-    <md-form-field class="full-width">
-      <input type="password" mdInput placeholder="Password" formControlName="password">
-    </md-form-field>
+    <mat-form-field class="full-width">
+      <input type="password" matInput placeholder="Password" formControlName="password">
+    </mat-form-field>
     <div class="validation_error" *ngIf="registerForm.get('password').hasError('required') && registerForm.get('password').touched">
       <i class="material-icons">error</i> Password is required
     </div>
   </div>
   <div class="col-md-12 register_field">
-    <md-form-field class="full-width">
-      <input type="password" mdInput placeholder="Confirm password" autocomplete="false" formControlName="confirmPassword">
-    </md-form-field>
+    <mat-form-field class="full-width">
+      <input type="password" matInput placeholder="Confirm password" autocomplete="false" formControlName="confirmPassword">
+    </mat-form-field>
     <div class="validation_error" *ngIf="registerForm.get('confirmPassword').errors
                                             && registerForm.get('confirmPassword').touched
                                             && registerForm.get('password').touched">
@@ -44,7 +44,7 @@
   </div>
   <div class="col-md-12">
     <md-card-actions align="end">
-      <button md-button type="submit" class="signup_btn" [disabled]="registerForm.invalid || registerForm.pristine">
+      <button mat-button type="submit" class="signup_btn" [disabled]="registerForm.invalid || registerForm.pristine">
         Sign up
       </button>
     </md-card-actions>

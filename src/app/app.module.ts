@@ -15,7 +15,7 @@ import { AuthenticationService } from './services/authentication.service';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { MdFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule, MatListModule, MatDialogModule } from '@angular/material';
+import { MatFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule, MatListModule, MatDialogModule } from '@angular/material';
 import { routing } from './app.routes';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { ChangePasswordDialogComponent, MyAccountComponent } from './dashboard/myaccount/myaccount.component';
@@ -45,7 +45,7 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    MdFormFieldModule,
+    MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
     MatTooltipModule,

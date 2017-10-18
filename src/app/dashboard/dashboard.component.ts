@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { fadeInAnimation } from '../shared/animations/fadeInAnimation';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../services/authentication.service';
-import { MD_DIALOG_DATA, MdDialog, MdDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService,
-              public confirmDialog: MdDialog) { }
+              public confirmDialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -41,7 +41,7 @@ export class DashboardComponent implements OnInit {
   templateUrl: './confirm.dialog.html'
 })
 export class ConfirmDialogComponent {
-  constructor(@Inject(MD_DIALOG_DATA) public data: any, public dialogRef: MdDialogRef<ConfirmDialogComponent>) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ConfirmDialogComponent>) { }
 
 }
 

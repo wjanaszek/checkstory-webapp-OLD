@@ -1,7 +1,7 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { fadeInAnimation } from '../../shared/animations/fadeInAnimation';
 import { Router } from '@angular/router';
-import { MD_DIALOG_DATA, MdDialog, MdDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { UserService } from '../../services/user-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidation } from '../../shared/password.validation';
@@ -18,7 +18,7 @@ export class MyAccountComponent implements OnInit {
   storiesCount: number;
 
   constructor(private router: Router,
-              public changePasswordDialog: MdDialog,
+              public changePasswordDialog: MatDialog,
               private userService: UserService) {
     this.storiesCount = 0;
   }
@@ -46,7 +46,7 @@ export class ChangePasswordDialogComponent {
 
   changePasswordForm: FormGroup;
 
-  constructor(@Inject(MD_DIALOG_DATA) public data: any, public dialogRef: MdDialogRef<ChangePasswordDialogComponent>, private fb: FormBuilder) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ChangePasswordDialogComponent>, private fb: FormBuilder) {
     this.changePasswordForm = this.fb.group({
       oldPassword: ['', Validators.required],
       newPassword: ['', Validators.required],
