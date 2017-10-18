@@ -23,6 +23,7 @@ import { StoryDetailComponent } from './dashboard/story-detail/story-detail.comp
 import { AboutComponent } from './dashboard/about/about.component';
 import { StoriesService } from './shared/services/stories.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MockBackend,
     BaseRequestOptions,
     StoriesService,
-    AuthGuard
+    AuthGuard,
+    Md5
   ],
   entryComponents: [
     ConfirmDialogComponent,
