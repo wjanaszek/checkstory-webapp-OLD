@@ -22,6 +22,7 @@ import { ChangePasswordDialogComponent, MyAccountComponent } from './dashboard/m
 import { StoryDetailComponent } from './dashboard/story-detail/story-detail.component';
 import { AboutComponent } from './dashboard/about/about.component';
 import { StoriesService } from './services/stories.service';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { StoriesService } from './services/stories.service';
     StoryDetailComponent,
     ConfirmDialogComponent,
     AboutComponent,
-    ChangePasswordDialogComponent
+    ChangePasswordDialogComponent,
+    PageNotFoundComponent
   ],
   imports: [
     routing,

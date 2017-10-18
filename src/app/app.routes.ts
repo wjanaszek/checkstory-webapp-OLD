@@ -10,6 +10,7 @@ import { StoryDetailComponent } from './dashboard/story-detail/story-detail.comp
 import { AboutComponent } from './dashboard/about/about.component';
 import { StoriesComponent } from './dashboard/stories/stories.component';
 import { AuthGuard } from './guards/auth.guard';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
 export const routes: Routes = [
   {
@@ -43,6 +44,10 @@ export const routes: Routes = [
       { path: 'story-details/:id', component: StoryDetailComponent },
       { path: 'about', component: AboutComponent }
     ]
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 
