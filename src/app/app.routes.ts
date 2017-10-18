@@ -9,6 +9,7 @@ import { MyAccountComponent } from './dashboard/myaccount/myaccount.component';
 import { StoryDetailComponent } from './dashboard/story-detail/story-detail.component';
 import { AboutComponent } from './dashboard/about/about.component';
 import { StoriesComponent } from './dashboard/stories/stories.component';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -35,6 +36,7 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: 'myaccount', component: MyAccountComponent },
       { path: 'story-list', component: StoriesComponent },

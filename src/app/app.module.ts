@@ -61,7 +61,8 @@ import { StoriesService } from './services/stories.service';
     fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,
-    StoriesService
+    StoriesService,
+    AuthGuard
   ],
   entryComponents: [
     ConfirmDialogComponent,

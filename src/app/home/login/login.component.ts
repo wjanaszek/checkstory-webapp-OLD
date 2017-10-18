@@ -38,17 +38,14 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  // ngOnChanges() {
-  //   this.visibility = this.isVisible ? 'shown' : 'hidden';
-  // }
-
   login() {
     console.log('logging: ' + this.loginForm.get('login').value + ', ' + this.loginForm.get('password').value);
     this.loading = true;
     this.authenticationService.login(this.loginForm.get('login').value, this.loginForm.get('password').value)
       .subscribe(
         data => {
-          this.router.navigate(['dashboard']);
+          console.log('logged in user: ' + JSON.stringify(data));
+          this.router.navigate(['dashboard/story-list']);
         },
         error => {
           this.loading = false;

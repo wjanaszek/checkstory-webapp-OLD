@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Story } from '../models/story.model';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 // TODO remove this mock
 export const STORIES: Story[] = [
@@ -10,7 +12,7 @@ export const STORIES: Story[] = [
 @Injectable()
 export class StoriesService {
 
-  constructor() { }
+  constructor(private http: Http) { }
 
   private stories = STORIES;
 
@@ -18,4 +20,8 @@ export class StoriesService {
     return this.stories;
   }
 
+  getById(id: number): Observable<Story> {
+    return this.http.get(`api/stories/${id}`)
+      .map(res => res.json());
+  }
 }
