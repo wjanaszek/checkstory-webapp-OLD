@@ -1,4 +1,3 @@
 export class Story {
-  id: number;
-  url: string;
+  constructor(private id: number, private url: string) {}
 }

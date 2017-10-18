@@ -1,9 +1,3 @@
 export class ChangePasswordActionModel {
-  oldPassword: string;
-  newPassword: string;
-
-  constructor(oldPassword?: string, newPassword?: string) {
-    this.oldPassword = oldPassword;
-    this.newPassword = newPassword;
-  }
+  constructor(private oldPassword: string, private newPassword: string) {}
 }
