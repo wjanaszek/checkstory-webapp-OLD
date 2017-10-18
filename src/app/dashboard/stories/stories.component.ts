@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { StoriesService } from '../../services/stories.service';
-import { Story } from '../../models/story.model';
+import { StoriesService } from '../../shared/services/stories.service';
+import { Story } from '../../shared/models/story.model';
 import { Router } from '@angular/router';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { fadeInAnimation } from '../shared/animations/fadeInAnimation';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../services/authentication.service';
+import { AuthenticationService } from '../shared/services/authentication.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({

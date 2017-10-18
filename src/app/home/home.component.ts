@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../models/user.model';
-import { UserService } from '../services/user-service';
+import { User } from '../shared/models/user.model';
+import { UserService } from '../shared/services/user-service';
 import { Router } from '@angular/router';
 import { fadeInAnimation } from '../shared/animations/fadeInAnimation';
 

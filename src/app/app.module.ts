@@ -5,13 +5,13 @@ import { AppComponent } from './app.component';
 import { ConfirmDialogComponent, DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoriesComponent } from './dashboard/stories/stories.component';
-import { UserService } from './services/user-service';
+import { UserService } from './shared/services/user-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
-import { AuthenticationService } from './services/authentication.service';
+import { AuthenticationService } from './shared/services/authentication.service';
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
@@ -21,8 +21,8 @@ import { WelcomeComponent } from './home/welcome/welcome.component';
 import { ChangePasswordDialogComponent, MyAccountComponent } from './dashboard/myaccount/myaccount.component';
 import { StoryDetailComponent } from './dashboard/story-detail/story-detail.component';
 import { AboutComponent } from './dashboard/about/about.component';
-import { StoriesService } from './services/stories.service';
-import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { StoriesService } from './shared/services/stories.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [

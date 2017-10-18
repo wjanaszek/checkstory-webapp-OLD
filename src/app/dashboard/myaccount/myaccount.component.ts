@@ -2,10 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { fadeInAnimation } from '../../shared/animations/fadeInAnimation';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
-import { UserService } from '../../services/user-service';
+import { UserService } from '../../shared/services/user-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidation } from '../../shared/password.validation';
-import { ChangePasswordActionModel } from '../../models/change-password-action.model';
+import { ChangePasswordActionModel } from '../../shared/models/change-password-action.model';
 
 @Component({
   selector: 'app-myaccount',
