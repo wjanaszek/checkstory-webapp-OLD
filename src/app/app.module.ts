@@ -25,6 +25,7 @@ import { StoriesService } from './shared/services/stories.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { Md5 } from 'ts-md5/dist/md5';
 import { RegistrationValidationService } from './shared/services/registration.validation.service';
+import { ChangePasswordValidationService } from './shared/services/change-password.validation.service';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { RegistrationValidationService } from './shared/services/registration.va
     StoriesService,
     AuthGuard,
     Md5,
-    RegistrationValidationService
+    RegistrationValidationService,
+    ChangePasswordValidationService
   ],
   entryComponents: [
     ConfirmDialogComponent,
