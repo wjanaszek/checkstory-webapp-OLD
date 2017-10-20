@@ -16,6 +16,7 @@ export class StoriesService {
 
   private stories = STORIES;
 
+  // musi byc jako requestbody currentuser albo jego id tylko
   getAll(): Story[] {
     return this.stories;
   }

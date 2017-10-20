@@ -1,3 +1,9 @@
 export class Story {
-  constructor(private id: number, private url: string) {}
+  id: number;
+  url: string;
+
+  constructor(id?: number, url?: string) {
+    this.id = id;
+    this.url = url;
+  }
 }

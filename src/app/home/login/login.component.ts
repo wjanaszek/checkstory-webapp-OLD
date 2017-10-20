@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthenticationService } from '../../shared/services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fadeInAnimation } from '../../shared/animations/fadeInAnimation';
+import { errorObject } from 'rxjs/util/errorObject';
 // import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
@@ -48,6 +49,7 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['dashboard/story-list']);
         },
         error => {
+          console.log('error: ' + JSON.stringify(error));
           this.loading = false;
         }
       );
