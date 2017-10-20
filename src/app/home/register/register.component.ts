@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PasswordValidation } from '../../shared/password.validation';
 import { Router } from '@angular/router';
-import { AuthenticationService } from '../../shared/services/authentication.service';
 import { fadeInAnimation } from '../../shared/animations/fadeInAnimation';
 import { UserService } from '../../shared/services/user-service';
 import { User } from '../../shared/models/user.model';
@@ -20,7 +19,6 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private authenticationService: AuthenticationService,
               private userService: UserService,
               private registrationValidationService: RegistrationValidationService) { }
 
@@ -55,7 +53,7 @@ export class RegisterComponent implements OnInit {
   validateLoginNotTaken(control: AbstractControl) {
     return this.registrationValidationService.checkLoginNotTaken(control.value).map(res => {
       return res ? null : { loginTaken: true };
-    })
+    });
   }
 
   goBack() {
