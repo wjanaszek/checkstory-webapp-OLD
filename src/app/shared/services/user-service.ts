@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
 import { Http, Headers, RequestOptions, Response } from '@angular/http';
 import { environment } from '../../../environments/environment';
-import { Md5 } from "ts-md5/dist/md5";
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Injectable()
 export class UserService {
@@ -55,7 +55,7 @@ export class UserService {
         'Authorization': 'Bearer ' + currentUser.token,
         'Content-Type': 'Application/json'
       });
-      return new RequestOptions({headers: headers});
+      return new RequestOptions({ headers: headers });
     } else {
       const headers = new Headers({
         'Content-Type': 'Application/json'});
