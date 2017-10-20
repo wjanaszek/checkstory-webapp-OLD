@@ -35,6 +35,9 @@ export class MyAccountComponent implements OnInit {
 
   changePassword(event) {
     console.log(JSON.stringify(event));
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    user.password = event.newPassword;
+    this.userService.update(user);
   }
 }
 

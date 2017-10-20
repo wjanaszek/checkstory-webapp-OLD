@@ -31,20 +31,4 @@ export class AuthenticationService {
     console.log('logged out: ' + JSON.stringify(localStorage.getItem('currentUser')));
     localStorage.removeItem('currentUser');
   }
-
-  // register(login: string, email: string, password: string) {
-  //   const hashedPassword = Md5.hashStr(password);
-  //   console.log('hashed password: ' + hashedPassword);
-  //   return this.http.post(environment.apiUrl + '/api/users', JSON.stringify({ login: login, email: email, password: hashedPassword }))
-  //     .map((response: Response) => {
-  //       const user = response.json();
-  //       // login registered user
-  //       if (user && user.token) {
-  //         // store user details and jwt token in local storage to keep user logged in between page refreshes
-  //         localStorage.setItem('currentUser', JSON.stringify(user));
-  //       }
-  //
-  //       return user;
-  //     });
-  // }
 }
