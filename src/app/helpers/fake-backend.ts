@@ -13,33 +13,33 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
     setTimeout(() => {
 
       // authenticate
-      if (connection.request.url.endsWith('/api/authenticate') && connection.request.method === RequestMethod.Post) {
-        // get parameters from post request
-        const params = JSON.parse(connection.request.getBody());
-
-        // find if any user matches login credentianls
-        const filteredUsers = users.filter(user => {
-          return user.login === params.login && user.password === params.password;
-        });
-
-        if (filteredUsers.length) {
-          // if login details are valid return 200 OK with user details and fake jwt token
-          const user = filteredUsers[0];
-          connection.mockRespond(new Response(new ResponseOptions({
-            status: 200,
-            body: {
-              id: user.id,
-              login: user.login,
-              token: 'fake-jwt-token'
-            }
-          })));
-        } else {
-          // return 400 bad request
-          connection.mockError(new Error('Login or password is incorrect'));
-        }
-
-        return;
-      }
+      // if (connection.request.url.endsWith('/api/authenticate') && connection.request.method === RequestMethod.Post) {
+      //   // get parameters from post request
+      //   const params = JSON.parse(connection.request.getBody());
+      //
+      //   // find if any user matches login credentianls
+      //   const filteredUsers = users.filter(user => {
+      //     return user.login === params.login && user.password === params.password;
+      //   });
+      //
+      //   if (filteredUsers.length) {
+      //     // if login details are valid return 200 OK with user details and fake jwt token
+      //     const user = filteredUsers[0];
+      //     connection.mockRespond(new Response(new ResponseOptions({
+      //       status: 200,
+      //       body: {
+      //         id: user.id,
+      //         login: user.login,
+      //         token: 'fake-jwt-token'
+      //       }
+      //     })));
+      //   } else {
+      //     // return 400 bad request
+      //     connection.mockError(new Error('Login or password is incorrect'));
+      //   }
+      //
+      //   return;
+      // }
 
       // get users
       if (connection.request.url.endsWith('/api/users') && connection.request.method === RequestMethod.Get) {
@@ -77,28 +77,28 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
       }
 
       // create user
-      if (connection.request.url.endsWith('/api/users') && connection.request.method === RequestMethod.Post) {
-        // get new user info form post body
-        const newUser = JSON.parse(connection.request.getBody());
-
-        // validation
-        const duplicateUser = users.filter(user => {
-          return user.login === newUser.login;
-        }).length;
-        if (duplicateUser) {
-          return connection.mockError(new Error('Login "' + newUser.login + '" already in use'));
-        }
-
-        // save new user
-        newUser.id = users.length + 1;
-        users.push(newUser);
-        localStorage.setItem('users', JSON.stringify(users));
-
-        // respond 200 OK
-        connection.mockRespond(new Response(new ResponseOptions({ status: 200 })));
-
-        return;
-      }
+      // if (connection.request.url.endsWith('/api/users') && connection.request.method === RequestMethod.Post) {
+      //   // get new user info form post body
+      //   const newUser = JSON.parse(connection.request.getBody());
+      //
+      //   // validation
+      //   const duplicateUser = users.filter(user => {
+      //     return user.login === newUser.login;
+      //   }).length;
+      //   if (duplicateUser) {
+      //     return connection.mockError(new Error('Login "' + newUser.login + '" already in use'));
+      //   }
+      //
+      //   // save new user
+      //   newUser.id = users.length + 1;
+      //   users.push(newUser);
+      //   localStorage.setItem('users', JSON.stringify(users));
+      //
+      //   // respond 200 OK
+      //   connection.mockRespond(new Response(new ResponseOptions({ status: 200 })));
+      //
+      //   return;
+      // }
 
       // delete user
       if (connection.request.url.match(/\/api\/users\/\d+$/) && connection.request.method === RequestMethod.Delete) {
