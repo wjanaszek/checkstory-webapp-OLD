@@ -12,6 +12,15 @@
     <mat-form-field class="login full-width">
       <input matInput placeholder="Login" formControlName="login">
     </mat-form-field>
+    <div *ngIf="registerForm.get('login').status === 'PENDING'">
+      Checking...
+    </div>
+    <div *ngIf="registerForm.get('login').status === 'VALID'">
+      Login available
+    </div>
+    <div class="validation_error" *ngIf="registerForm.get('login').errors && registerForm.get('login').errors.loginTaken">
+      <i class="material-icons">error</i> Login already in use
+    </div>
     <div class="validation_error" *ngIf="registerForm.get('login').errors && registerForm.get('login').touched">
       <i class="material-icons">error</i> Login is required
     </div>
@@ -20,6 +29,15 @@
     <mat-form-field class="full-width">
       <input type="email" matInput placeholder="Email" formControlName="email">
     </mat-form-field>
+    <div *ngIf="registerForm.get('email').status === 'PENDING'">
+      Checking...
+    </div>
+    <div *ngIf="registerForm.get('email').status === 'VALID'">
+      Email available
+    </div>
+    <div class="validation_error" *ngIf="registerForm.get('email').errors && registerForm.get('email').errors.emailTaken">
+      <i class="material-icons">error</i> Email already in use
+    </div>
     <div class="validation_error" *ngIf="registerForm.get('email').errors && registerForm.get('email').touched">
       <i class="material-icons">error</i> Email is required
     </div>

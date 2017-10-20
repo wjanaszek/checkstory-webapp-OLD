@@ -34,8 +34,6 @@ export class UserService {
 
         return user;
       });
-    // return this.http.post(environment.apiUrl + '/api/users', user, this.jwt())
-    //   .map((response: Response) => response.json());
   }
 
   update(user: User) {
