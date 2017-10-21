@@ -11,12 +11,18 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
   host: { '[@fadeInAnimation]': '' }
 })
 export class DashboardComponent implements OnInit {
+  defaultRoute: boolean;
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService,
               public confirmDialog: MatDialog) { }
 
   ngOnInit() {
+    if (this.router.url.endsWith('dashboard/story-list')) {
+      this.defaultRoute = true;
+    } else {
+      this.defaultRoute = false;
+    }
   }
 
   openConfirmDialog() {
@@ -26,6 +32,8 @@ export class DashboardComponent implements OnInit {
       console.log('result: ' + result);
       if (result === 'true') {
         this.goLogout();
+      } else {
+        this.router.navigate(['/dashboard/myaccount']);
       }
     });
   }

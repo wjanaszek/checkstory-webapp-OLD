@@ -15,7 +15,10 @@ import { AuthenticationService } from './shared/services/authentication.service'
 import { fakeBackendProvider } from './helpers/fake-backend';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import { MatFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule, MatListModule, MatDialogModule } from '@angular/material';
+import {
+  MatFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule, MatListModule, MatDialogModule,
+  MatTabsModule, MatMenuModule
+} from '@angular/material';
 import { routing } from './app.routes';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { ChangePasswordDialogComponent, MyAccountComponent } from './dashboard/myaccount/myaccount.component';
@@ -54,6 +57,8 @@ import { ChangePasswordValidationService } from './shared/services/change-passwo
     MatTooltipModule,
     MatListModule,
     MatDialogModule,
+    MatTabsModule,
+    MatMenuModule,
     ReactiveFormsModule,
     HttpModule
   ],

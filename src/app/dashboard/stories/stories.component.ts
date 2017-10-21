@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class StoriesComponent implements OnInit {
 
-  //TODO implement this in the future with service
   stories: Story[];
   selectedStory: Story;
 
@@ -17,11 +16,16 @@ export class StoriesComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.stories = this.storiesService.getAll();
+    this.storiesService.getAll()
+      .subscribe(stories => this.stories = stories);
     this.selectedStory = null;
   }
 
   private goToStoryDetails(id: number) {
     this.router.navigate(['/dashboard/story-details', id]);
+  }
+
+  openAddStoryDialog() {
+
   }
 }
