@@ -20,8 +20,11 @@ export class StoriesService {
   }
 
   getById(id: number): Observable<Story> {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    const requestParam = new URLSearchParams();
+    requestParam.append('userId', `${currentUser.id}`);
     return this.http.get(environment.apiUrl + `/api/stories/${id}`, { headers: headers })
       .map(res => res.json());
   }
