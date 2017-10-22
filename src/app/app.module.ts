@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { ConfirmDialogComponent, DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { StoriesComponent } from './dashboard/stories/stories.component';
+import { AddStoryDialogComponent, StoriesComponent, RemoveStoryDialogComponent } from './dashboard/stories/stories.component';
 import { UserService } from './shared/services/user-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './shared/guards/auth.guard';
@@ -44,7 +44,9 @@ import { ChangePasswordValidationService } from './shared/services/change-passwo
     ConfirmDialogComponent,
     AboutComponent,
     ChangePasswordDialogComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    AddStoryDialogComponent,
+    RemoveStoryDialogComponent
   ],
   imports: [
     routing,
