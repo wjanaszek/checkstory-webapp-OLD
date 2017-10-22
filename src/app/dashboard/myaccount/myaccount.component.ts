@@ -73,9 +73,6 @@ export class ChangePasswordDialogComponent {
 
   validateOldPassword(control: AbstractControl) {
     // TODO biezacy user ze store (trzeba zrobic store) - tymczasowo z localStorage
-    // return this.changePasswordValidationService.checkPassword(control.value).map(res => {
-    //   return res ? null : { emailTaken: true };
-    // });
     return this.changePasswordValidationService.checkPassword(JSON.parse(localStorage.getItem('currentUser')).id, control.value)
       .map(res => {
         return res ? null : { passwordNotCorrect: true };

@@ -30,7 +30,7 @@ export class StoriesComponent implements OnInit {
     this.selectedStory = null;
   }
 
-  private goToStoryDetails(id: number) {
+  goToStoryDetails(id: number) {
     this.router.navigate(['/dashboard/story-details', id]);
   }
 
@@ -54,13 +54,14 @@ export class StoriesComponent implements OnInit {
       });
   }
 
-  private addStory(story: Story) {
-    this.storiesService.addStory(story);
+  addStory(event) {
+    console.log('adding: ' + JSON.stringify(event));
+    this.storiesService.addStory(event);
   }
 }
 
 @Component({
-  templateUrl: './dialogs/add.story.dialog.component.html'
+  templateUrl: './add.story.dialog.component.html'
 })
 export class AddStoryDialogComponent {
 
@@ -76,5 +77,17 @@ export class AddStoryDialogComponent {
       longitude: ['', [Validators.required]],
       startDate: ['']
     });
+  }
+
+  addStory() {
+    console.log('addStory dialog');
+    this.data(new Story(
+      this.addStoryForm.get('title').value,
+      this.addStoryForm.get('description').value,
+      this.addStoryForm.get('latitude').value,
+      this.addStoryForm.get('longitude').value,
+      this.addStoryForm.get('startDate').value
+      )
+    );
   }
 }

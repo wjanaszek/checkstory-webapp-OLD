@@ -101,26 +101,26 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
       // }
 
       // delete user
-      if (connection.request.url.match(/\/api\/users\/\d+$/) && connection.request.method === RequestMethod.Delete) {
-        // check for fake auth token and return user if valid
-        if (connection. request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-          const urlParts = connection.request.url.split('/');
-          const id: number = parseInt(urlParts[urlParts.length - 1]);
-          for (let i = 0; i < users.length; i++) {
-            if (users[i].id === id) {
-              // delete user
-              users.splice(i, 1);
-              localStorage.setItem('users', JSON.stringify(users));
-              break;
-            }
-          }
-
-          // respond 200 OK
-          connection.mockRespond(new Response(new ResponseOptions({ status: 200})));
-        }
-
-        return;
-      }
+      // if (connection.request.url.match(/\/api\/users\/\d+$/) && connection.request.method === RequestMethod.Delete) {
+      //   // check for fake auth token and return user if valid
+      //   if (connection. request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
+      //     const urlParts = connection.request.url.split('/');
+      //     const id: number = parseInt(urlParts[urlParts.length - 1]);
+      //     for (let i = 0; i < users.length; i++) {
+      //       if (users[i].id === id) {
+      //         // delete user
+      //         users.splice(i, 1);
+      //         localStorage.setItem('users', JSON.stringify(users));
+      //         break;
+      //       }
+      //     }
+      //
+      //     // respond 200 OK
+      //     connection.mockRespond(new Response(new ResponseOptions({ status: 200})));
+      //   }
+      //
+      //   return;
+      // }
 
       // pass through any requests not handled above
       const realHttp = new Http(realBackend, options);

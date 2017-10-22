@@ -38,14 +38,26 @@ export class StoriesService {
   }
 
   addStory(story: Story) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    console.log('sending: ' + JSON.stringify({
+      title: story.title,
+      description: story.description,
+      latitude: story.latitude,
+      longitute: story.longitude,
+      startDate: story.startDate,
+      owner: currentUser,
+      photos: []
+    }));
     return this.http.post(environment.apiUrl + '/api/stories', JSON.stringify({
       title: story.title,
       description: story.description,
       latitude: story.latitude,
       longitute: story.longitude,
-      startDate: story.startDate
+      startDate: story.startDate,
+      owner: currentUser,
+      photos: []
     }), jwt())
       .map((response: Response) => {
         const storyFromResponse = response.json();

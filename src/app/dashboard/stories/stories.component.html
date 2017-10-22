@@ -1,12 +1,10 @@
 <div *ngIf="!stories.length">
   You don't have any stories yet
 </div>
-<button mat-button type="button" (click)="openAddStoryDialog()">
-  <i class="material-icons">add_circle</i> Add story
-</button>
 <div>
   <ul id="thumbnailsStoriesList">
     <li *ngFor="let story of stories">
+      <strong>{{ story.title }}</strong>
       <img src="{{ story.title }}" class="tn" width="191" height="146" (click)="goToStoryDetails(story.id)">
       <button mat-button type="button" (click)="editStory(story.id)">
         <i class="material-icons">mode_edit</i>
@@ -16,4 +14,7 @@
       </button>
     </li>
   </ul>
+  <button mat-button type="button" (click)="openAddStoryDialog()">
+    <i class="material-icons">add_circle</i> Add story
+  </button>
 </div>

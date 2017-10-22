@@ -37,7 +37,14 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put(environment.apiUrl + '/api/users/' + user.id, user, jwt())
+    const hashedPassword = Md5.hashStr(user.password);
+    return this.http.put(environment.apiUrl + '/api/users/' + user.id,
+      JSON.stringify({
+        id: user.id,
+        login: user.login,
+        email: user.email,
+        password: hashedPassword
+      }), jwt())
       .map((response: Response) => response.json());
   }
 

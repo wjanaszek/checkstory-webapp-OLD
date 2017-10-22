@@ -26,7 +26,7 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput [matDatepicker]="picker" placeholder="Start date">
+        <input matInput [matDatepicker]="picker" placeholder="Start date" formControlName="startDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
         <mat-error *ngIf="addStoryForm.get('startDate').hasError('required') && addStoryForm.get('startDate').touched">
@@ -37,6 +37,10 @@
   </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button type="submit" (click)="dialogRef.close()">Add</button>
+  <button mat-button type="submit"
+          [disabled]="addStoryForm.invalid"
+          (click)="addStory(); dialogRef.close()">
+    Add
+  </button>
   <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
 </mat-dialog-actions>
