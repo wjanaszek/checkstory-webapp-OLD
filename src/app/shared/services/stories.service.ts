@@ -37,7 +37,14 @@ export class StoriesService {
       .map(res => res.json());
   }
 
-  addStory(story: Story) {
+  update(story: Story): Observable<Story> {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put(environment.apiUrl + `/api/stories/${story.id}`, JSON.stringify(story), { headers: headers })
+      .map(res => res.json());
+  }
+
+  add(story: Story) {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');

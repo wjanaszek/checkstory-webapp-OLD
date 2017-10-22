@@ -56,7 +56,7 @@ export class StoriesComponent implements OnInit {
 
   addStory(event) {
     console.log('adding: ' + JSON.stringify(event));
-    this.storiesService.addStory(event);
+    this.storiesService.add(event);
   }
 }
 
@@ -80,7 +80,7 @@ export class AddStoryDialogComponent {
   }
 
   addStory() {
-    console.log('addStory dialog');
+    console.log('add dialog');
     this.data(new Story(
       this.addStoryForm.get('title').value,
       this.addStoryForm.get('description').value,
