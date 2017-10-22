@@ -15,6 +15,7 @@ export class StoryDetailComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private storiesService: StoriesService) {
     this.editing = false;
+    this.story = new Story();
   }
 
   ngOnInit() {
