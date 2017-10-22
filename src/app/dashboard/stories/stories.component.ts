@@ -2,8 +2,9 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { StoriesService } from '../../shared/services/stories.service';
 import { Story } from '../../shared/models/story.model';
 import { Router } from '@angular/router';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { User } from '../../shared/models/user.model';
+import { DialogsService } from '../../shared/services/dialogs.service';
 
 @Component({
   selector: 'app-stories',
@@ -16,7 +17,9 @@ export class StoriesComponent implements OnInit {
   selectedStory: Story;
 
   constructor(private storiesService: StoriesService,
-              private router: Router) {
+              private router: Router,
+              private dialog: MatDialog,
+              private dialogsService: DialogsService) {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -31,15 +34,21 @@ export class StoriesComponent implements OnInit {
   }
 
   openAddStoryDialog() {
-
+    const dialogRef = this.dialog.open(AddStoryDialogComponent);
   }
 
   editStory(id: number) {
-
+    this.router.navigate(['/dashboard/story-details', id]);
   }
 
-  openRemoveStoryDialog() {
-
+  openRemoveStoryDialog(story: Story) {
+    this.dialogsService
+      .confirm('Remove', `Are you sure you want to remove story \"${story.title}\"`, 'Yes', 'No')
+      .subscribe(result => {
+        if (result === true) {
+          this.storiesService.delete(story.id);
+        }
+      });
   }
 }
 
@@ -48,11 +57,4 @@ export class StoriesComponent implements OnInit {
 })
 export class AddStoryDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddStoryDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
-}
-
-@Component({
-  templateUrl: './dialogs/remove.story.dialog.component.html'
-})
-export class RemoveStoryDialogComponent {
-  constructor(public dialogRef: MatDialogRef<RemoveStoryDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 }

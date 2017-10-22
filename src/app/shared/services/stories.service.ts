@@ -28,4 +28,11 @@ export class StoriesService {
     return this.http.get(environment.apiUrl + `/api/stories/${id}`, { headers: headers })
       .map(res => res.json());
   }
+
+  delete(id: number): Observable<Story> {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.delete(environment.apiUrl + `/api/stories/${id}`, { headers: headers })
+      .map(res => res.json());
+  }
 }

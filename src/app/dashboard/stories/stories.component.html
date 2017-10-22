@@ -7,11 +7,11 @@
 <div>
   <ul id="thumbnailsStoriesList">
     <li *ngFor="let story of stories">
-      <img src="{{ story.url }}" class="tn" width="191" height="146" (click)="goToStoryDetails(story.id)">
+      <img src="{{ story.title }}" class="tn" width="191" height="146" (click)="goToStoryDetails(story.id)">
       <button mat-button type="button" (click)="editStory(story.id)">
         <i class="material-icons">mode_edit</i>
       </button>
-      <button mat-button type="button" (click)="openRemoveStoryDialog()">
+      <button mat-button type="button" (click)="openRemoveStoryDialog(story)">
         <i class="material-icons">clear</i>
       </button>
     </li>

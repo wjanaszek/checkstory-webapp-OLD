@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 
 @Component({
-  templateUrl: './confirm.dialog.component'
+  templateUrl: './confirm.dialog.component.html'
 })
 export class ConfirmDialogComponent {
 

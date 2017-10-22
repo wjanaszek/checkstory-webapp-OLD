@@ -13,7 +13,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
     setTimeout(() => {
 
       // authenticate
-      // if (connection.request.url.endsWith('/api/authenticate') && connection.request.method === RequestMethod.Post) {
+      // if (connection.request.title.endsWith('/api/authenticate') && connection.request.method === RequestMethod.Post) {
       //   // get parameters from post request
       //   const params = JSON.parse(connection.request.getBody());
       //
@@ -77,7 +77,7 @@ export function fakeBackendFactory(backend: MockBackend, options: BaseRequestOpt
       }
 
       // create user
-      // if (connection.request.url.endsWith('/api/users') && connection.request.method === RequestMethod.Post) {
+      // if (connection.request.title.endsWith('/api/users') && connection.request.method === RequestMethod.Post) {
       //   // get new user info form post body
       //   const newUser = JSON.parse(connection.request.getBody());
       //
