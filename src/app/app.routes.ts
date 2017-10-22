@@ -42,9 +42,8 @@ export const routes: Routes = [
     children: [
       { path: 'myaccount', component: MyAccountComponent },
       { path: 'story-list', component: StoriesComponent },
-      { path: 'story-details/:id', component: StoryDetailComponent, children: [
-        { path: 'edit', component: StoryDetailEditComponent }
-      ]},
+      { path: 'story-details/:id', component: StoryDetailComponent },
+      { path: 'story-details/:id/edit', component: StoryDetailEditComponent },
       { path: 'about', component: AboutComponent }
     ]
   },

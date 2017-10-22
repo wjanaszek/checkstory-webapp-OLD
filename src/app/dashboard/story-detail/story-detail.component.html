@@ -1,34 +1,3 @@
-<div *ngIf="editing" class="col-md-12">
-  <form novalidate (ngSubmit)="add()" [formGroup]="addStoryForm">
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Title" formControlName="title">
-      <mat-error *ngIf="addStoryForm.get('title').hasError('required') && addStoryForm.get('title').touched">
-        Title is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <textarea matInput placeholder="Description" formControlName="description"></textarea>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Latitude" formControlName="latitude">
-      <mat-error *ngIf="addStoryForm.get('latitude').hasError('required') && addStoryForm.get('latitude').touched">
-        Latitude is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <input matInput placeholder="Longitude" formControlName="longitude">
-      <mat-error *ngIf="addStoryForm.get('longitude').hasError('required') && addStoryForm.get('longitude').touched">
-        Longitude is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-    <mat-form-field class="full-width">
-      <input matInput [matDatepicker]="picker" placeholder="Start date" formControlName="startDate">
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-datepicker #picker></mat-datepicker>
-      <mat-error *ngIf="addStoryForm.get('startDate').hasError('required') && addStoryForm.get('startDate').touched">
-        Start date is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-  </form>
-</div>
-<div *ngIf="!editing"></div>
+<p>
+  story detail works
+</p>

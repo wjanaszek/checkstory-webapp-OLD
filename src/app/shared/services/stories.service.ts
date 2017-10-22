@@ -26,7 +26,7 @@ export class StoriesService {
     headers.append('Content-Type', 'application/json');
     const requestParam = new URLSearchParams();
     requestParam.append('userId', `${currentUser.id}`);
-    return this.http.get(environment.apiUrl + `/api/stories/${id}`, { headers: headers })
+    return this.http.get(environment.apiUrl + `/api/stories/${id}`, { headers: headers, params: requestParam })
       .map(res => res.json());
   }
 
