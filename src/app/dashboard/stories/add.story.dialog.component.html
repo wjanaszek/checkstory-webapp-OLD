@@ -2,7 +2,7 @@
   Add story
 </h3>
 <mat-dialog-content>
-  <form novalidate (ngSubmit)="add()" [formGroup]="addStoryForm">
+  <form novalidate (ngSubmit)="addStory()" [formGroup]="addStoryForm">
     <div class="col-md-12">
       <mat-form-field class="full-width">
         <input matInput placeholder="Title" formControlName="title">
@@ -39,7 +39,7 @@
 <mat-dialog-actions>
   <button mat-button type="submit"
           [disabled]="addStoryForm.invalid"
-          (click)="add(); dialogRef.close()">
+          (click)="addStory(); dialogRef.close()">
     Add
   </button>
   <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>

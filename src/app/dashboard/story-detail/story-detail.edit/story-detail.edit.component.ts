@@ -19,10 +19,16 @@ export class StoryDetailEditComponent implements OnInit {
               private storiesService: StoriesService) {
     this.story = new Story();
     this.route.params.subscribe(params => this.story.id = +params['id']);
-    this.storiesService.getById(this.story.id).subscribe(story => this.story = story);
   }
 
   ngOnInit() {
+    this.storiesService.getById(this.story.id).subscribe(story => {
+      this.story = story;
+      this.initForm();
+    });
+  }
+
+  private initForm() {
     this.editStoryForm = this.fb.group({
       title: [this.story.title, [Validators.required]],
       description: [this.story.description],
@@ -35,7 +41,7 @@ export class StoryDetailEditComponent implements OnInit {
   update() {
     const storyToUpdate = this.loadDataFromFormToStory();
     this.storiesService.update(this.story);
-    this.router.navigate(['/dashboard/story-list', this.story.id]);
+    this.router.navigate(['/dashboard/story-details', this.story.id]);
   }
 
   goBack() {
