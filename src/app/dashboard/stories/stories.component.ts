@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { User } from '../../shared/models/user.model';
 import { DialogsService } from '../../shared/services/dialogs.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-stories',
@@ -34,7 +35,9 @@ export class StoriesComponent implements OnInit {
   }
 
   openAddStoryDialog() {
-    const dialogRef = this.dialog.open(AddStoryDialogComponent);
+    const dialogRef = this.dialog.open(AddStoryDialogComponent, {
+      data: this.addStory.bind(this)
+    });
   }
 
   editStory(id: number) {
@@ -50,11 +53,28 @@ export class StoriesComponent implements OnInit {
         }
       });
   }
+
+  private addStory(story: Story) {
+    this.storiesService.addStory(story);
+  }
 }
 
 @Component({
   templateUrl: './dialogs/add.story.dialog.component.html'
 })
 export class AddStoryDialogComponent {
-  constructor(public dialogRef: MatDialogRef<AddStoryDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  addStoryForm: FormGroup;
+
+  constructor(public dialogRef: MatDialogRef<AddStoryDialogComponent>,
+              @Inject(MAT_DIALOG_DATA) public data: any,
+              private fb: FormBuilder) {
+    this.addStoryForm = this.fb.group({
+      title: ['', [Validators.required]],
+      description: [''],
+      latitude: ['', [Validators.required]],
+      longitude: ['', [Validators.required]],
+      startDate: ['']
+    });
+  }
 }
