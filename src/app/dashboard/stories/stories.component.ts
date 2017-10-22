@@ -6,6 +6,7 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { User } from '../../shared/models/user.model';
 import { DialogsService } from '../../shared/services/dialogs.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-stories',
@@ -14,7 +15,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class StoriesComponent implements OnInit {
 
   user: User;
-  stories: Story[] = [];
+  stories: Observable<Story[]>;
   selectedStory: Story;
 
   constructor(private storiesService: StoriesService,
@@ -25,8 +26,7 @@ export class StoriesComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.storiesService.getAll()
-      .subscribe(stories => this.stories = stories);
+    this.stories = this.storiesService.getAll();
     this.selectedStory = null;
   }
 

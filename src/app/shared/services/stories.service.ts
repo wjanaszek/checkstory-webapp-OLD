@@ -30,7 +30,7 @@ export class StoriesService {
       .map(res => res.json());
   }
 
-  delete(id: number): Observable<Story> {
+  delete(id: number) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.delete(environment.apiUrl + `/api/stories/${id}`, { headers: headers })
@@ -54,7 +54,7 @@ export class StoriesService {
       title: story.title,
       description: story.description,
       latitude: story.latitude,
-      longitute: story.longitude,
+      longitude: story.longitude,
       startDate: story.startDate,
       owner: currentUser,
       photos: []
