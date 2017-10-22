@@ -44,14 +44,14 @@ export class StoriesComponent implements OnInit {
 }
 
 @Component({
-  templateUrl: './add.story.dialog.component.html'
+  templateUrl: './dialogs/add.story.dialog.component.html'
 })
 export class AddStoryDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddStoryDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
 }
 
 @Component({
-  templateUrl: './remove.story.dialog.component.html'
+  templateUrl: './dialogs/remove.story.dialog.component.html'
 })
 export class RemoveStoryDialogComponent {
   constructor(public dialogRef: MatDialogRef<RemoveStoryDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }

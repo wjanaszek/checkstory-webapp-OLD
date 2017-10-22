@@ -1,8 +1,8 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { fadeInAnimation } from '../shared/animations/fadeInAnimation';
 import { Router } from '@angular/router';
 import { AuthenticationService } from '../shared/services/authentication.service';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+import { DialogsService } from '../shared/services/dialogs.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,7 +15,7 @@ export class DashboardComponent implements OnInit {
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService,
-              public confirmDialog: MatDialog) { }
+              public dialogsService: DialogsService) { }
 
   ngOnInit() {
     if (this.router.url.endsWith('dashboard/story-list')) {
@@ -26,30 +26,18 @@ export class DashboardComponent implements OnInit {
   }
 
   openConfirmDialog() {
-    const dialogRef = this.confirmDialog.open(ConfirmDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('result: ' + result);
-      if (result === 'true') {
-        this.goLogout();
-      } else {
-        this.router.navigate(['/dashboard/myaccount']);
-      }
-    });
+    this.dialogsService
+      .confirm('Logout', 'Are you sure you want to logout?', 'Yes', 'No')
+      .subscribe(result => {
+        if (result === true) {
+          this.goLogout();
+        }
+      });
   }
 
   private goLogout() {
     this.authenticationService.logout();
     this.router.navigate(['/home']);
   }
-}
-
-@Component({
-  selector: 'app-confirm-dialog',
-  templateUrl: './confirm.dialog.html'
-})
-export class ConfirmDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<ConfirmDialogComponent>) { }
-
 }
 

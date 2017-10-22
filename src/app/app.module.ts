@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { ConfirmDialogComponent2, DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddStoryDialogComponent, StoriesComponent, RemoveStoryDialogComponent } from './dashboard/stories/stories.component';
 import { UserService } from './shared/services/user-service';
@@ -30,6 +30,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 import { RegistrationValidationService } from './shared/services/registration.validation.service';
 import { ChangePasswordValidationService } from './shared/services/change-password.validation.service';
 import { ConfirmDialogComponent } from './shared/confirm.dialog.component';
+import { DialogsService } from './shared/services/dialogs.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,6 @@ import { ConfirmDialogComponent } from './shared/confirm.dialog.component';
     WelcomeComponent,
     MyAccountComponent,
     StoryDetailComponent,
-    ConfirmDialogComponent2,
     AboutComponent,
     ChangePasswordDialogComponent,
     PageNotFoundComponent,
@@ -67,7 +67,7 @@ import { ConfirmDialogComponent } from './shared/confirm.dialog.component';
     HttpModule
   ],
   exports: [
-    ConfirmDialogComponent2
+    ConfirmDialogComponent
   ],
   providers: [
     UserService,
@@ -79,10 +79,11 @@ import { ConfirmDialogComponent } from './shared/confirm.dialog.component';
     AuthGuard,
     Md5,
     RegistrationValidationService,
-    ChangePasswordValidationService
+    ChangePasswordValidationService,
+    DialogsService
   ],
   entryComponents: [
-    ConfirmDialogComponent2,
+    ConfirmDialogComponent,
     ChangePasswordDialogComponent
   ],
   bootstrap: [ AppComponent ]
