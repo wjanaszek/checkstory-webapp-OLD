@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AddStoryDialogComponent, StoriesComponent, RemoveStoryDialogComponent } from './dashboard/stories/stories.component';
+import { AddStoryDialogComponent, StoriesComponent } from './dashboard/stories/stories.component';
 import { UserService } from './shared/services/user-service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthGuard } from './shared/guards/auth.guard';
@@ -16,8 +16,14 @@ import { fakeBackendProvider } from './helpers/fake-backend';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import {
-  MatFormFieldModule, MatInputModule, MatButtonModule, MatTooltipModule, MatListModule, MatDialogModule,
-  MatTabsModule, MatMenuModule
+  MatButtonModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatTabsModule,
+  MatTooltipModule
 } from '@angular/material';
 import { routing } from './app.routes';
 import { WelcomeComponent } from './home/welcome/welcome.component';
@@ -47,7 +53,6 @@ import { DialogsService } from './shared/services/dialogs.service';
     ChangePasswordDialogComponent,
     PageNotFoundComponent,
     AddStoryDialogComponent,
-    RemoveStoryDialogComponent,
     ConfirmDialogComponent
   ],
   imports: [

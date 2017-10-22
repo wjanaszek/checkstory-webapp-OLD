@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Md5 } from "ts-md5/dist/md5";
+import { Md5 } from 'ts-md5/dist/md5';
 import { environment } from '../../../environments/environment';
 import { jwt } from '../jwt.headers';
 
