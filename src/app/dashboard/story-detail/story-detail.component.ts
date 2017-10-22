@@ -10,10 +10,11 @@ import { ActivatedRoute } from '@angular/router';
 export class StoryDetailComponent implements OnInit {
 
   story: Story;
+  editing: boolean;
 
   constructor(private route: ActivatedRoute,
               private storiesService: StoriesService) {
-    this.story = new Story();
+    this.editing = false;
   }
 
   ngOnInit() {

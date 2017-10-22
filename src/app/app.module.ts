@@ -37,6 +37,7 @@ import { RegistrationValidationService } from './shared/services/registration.va
 import { ChangePasswordValidationService } from './shared/services/change-password.validation.service';
 import { ConfirmDialogComponent } from './shared/confirm.dialog.component';
 import { DialogsService } from './shared/services/dialogs.service';
+import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.edit/story-detail.edit.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { DialogsService } from './shared/services/dialogs.service';
     ChangePasswordDialogComponent,
     PageNotFoundComponent,
     AddStoryDialogComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    StoryDetailEditComponent
   ],
   imports: [
     routing,

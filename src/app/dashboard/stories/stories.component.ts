@@ -41,7 +41,7 @@ export class StoriesComponent implements OnInit {
   }
 
   editStory(id: number) {
-    this.router.navigate(['/dashboard/story-details', id]);
+    this.router.navigate(['/dashboard/story-details', id, 'edit']);
   }
 
   openRemoveStoryDialog(story: Story) {

@@ -11,6 +11,7 @@ import { AboutComponent } from './dashboard/about/about.component';
 import { StoriesComponent } from './dashboard/stories/stories.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.edit/story-detail.edit.component';
 
 export const routes: Routes = [
   {
@@ -42,6 +43,7 @@ export const routes: Routes = [
       { path: 'myaccount', component: MyAccountComponent },
       { path: 'story-list', component: StoriesComponent },
       { path: 'story-details/:id', component: StoryDetailComponent },
+      { path: 'story-details/:id/edit', component: StoryDetailEditComponent },
       { path: 'about', component: AboutComponent }
     ]
   },
