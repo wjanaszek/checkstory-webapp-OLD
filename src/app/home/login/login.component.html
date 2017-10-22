@@ -11,18 +11,16 @@
   <div class="col-md-12">
     <mat-form-field class="full-width">
       <input matInput placeholder="Login" formControlName="login">
+      <mat-error *ngIf="loginForm.get('login').hasError('required') && loginForm.get('login').touched">
+        Login is required
+      </mat-error>
     </mat-form-field>
-    <div class="validation_error" *ngIf="loginForm.get('login').errors && loginForm.get('login').touched">
-      <i class="material-icons">error</i> Login is required
-    </div>
-  </div>
-  <div class="col-md-12">
     <mat-form-field class="full-width">
       <input type="password" matInput placeholder="Password" formControlName="password" autocomplete="false">
+      <mat-error *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">
+        Password is required
+      </mat-error>
     </mat-form-field>
-    <div class="validation_error" *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched">
-      <i class="material-icons">error</i> Password is required
-    </div>
   </div>
   <div class="col-md-12 login_actions">
     <a href="" class="forgot_pswd_btn">Forgot password</a>

@@ -16,12 +16,12 @@ import { fakeBackendProvider } from './helpers/fake-backend';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import {
-  MatButtonModule,
+  MatButtonModule, MatDatepickerModule,
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule,
+  MatMenuModule, MatNativeDateModule,
   MatTabsModule,
   MatTooltipModule
 } from '@angular/material';
@@ -67,6 +67,8 @@ import { DialogsService } from './shared/services/dialogs.service';
     MatListModule,
     MatDialogModule,
     MatTabsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatMenuModule,
     ReactiveFormsModule,
     HttpModule
@@ -89,7 +91,8 @@ import { DialogsService } from './shared/services/dialogs.service';
   ],
   entryComponents: [
     ConfirmDialogComponent,
-    ChangePasswordDialogComponent
+    ChangePasswordDialogComponent,
+    AddStoryDialogComponent
   ],
   bootstrap: [ AppComponent ]
 })

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Story } from '../models/story.model';
-import { Headers, Http, URLSearchParams } from '@angular/http';
+import { Headers, Http, URLSearchParams, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
+import { jwt } from '../jwt.headers';
 
 @Injectable()
 export class StoriesService {
@@ -34,5 +35,21 @@ export class StoriesService {
     headers.append('Content-Type', 'application/json');
     return this.http.delete(environment.apiUrl + `/api/stories/${id}`, { headers: headers })
       .map(res => res.json());
+  }
+
+  addStory(story: Story) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post(environment.apiUrl + '/api/stories', JSON.stringify({
+      title: story.title,
+      description: story.description,
+      latitude: story.latitude,
+      longitute: story.longitude,
+      startDate: story.startDate
+    }), jwt())
+      .map((response: Response) => {
+        const storyFromResponse = response.json();
+        return storyFromResponse;
+      });
   }
 }
