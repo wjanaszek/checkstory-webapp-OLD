@@ -5,14 +5,14 @@
   <ul id="thumbnailsStoriesList">
     <li *ngFor="let story of stories | async">
       <strong>{{ story.title }}</strong>
-      <img class="tn" width="191" height="146" (click)="goToStoryDetails(story.id)">
+      <img class="tn" width="191" height="146" (click)="goToStoryDetails(story)">
       <div>
         {{ story.latitude }}, {{ story.longitude }}
       </div>
       <div *ngIf="story.startDate">
-        {{ story.date }}
+        {{ story.startDate }}
       </div>
-      <button mat-button type="button" (click)="editStory(story.id)">
+      <button mat-button type="button" (click)="editStory(story)">
         <i class="material-icons">mode_edit</i>
       </button>
       <button mat-button type="button" (click)="openRemoveStoryDialog(story)">

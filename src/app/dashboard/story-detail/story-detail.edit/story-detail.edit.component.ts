@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Story } from '../../../shared/models/story.model';
 import { StoriesService } from '../../../shared/services/stories.service';
+import { NgProgressService } from 'ngx-progressbar';
+import { ComponentCommunicationService } from '../../../shared/services/component-communication.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-story-detail.edit',
@@ -12,20 +15,26 @@ export class StoryDetailEditComponent implements OnInit {
 
   editStoryForm: FormGroup;
   story: Story;
+  subscription: Subscription;
 
   constructor(private fb: FormBuilder,
               private route: ActivatedRoute,
               private router: Router,
-              private storiesService: StoriesService) {
+              private storiesService: StoriesService,
+              private componentCommunicationService: ComponentCommunicationService,
+              public progressService: NgProgressService) {
     this.story = new Story();
     this.route.params.subscribe(params => this.story.id = +params['id']);
   }
 
   ngOnInit() {
-    this.storiesService.getById(this.story.id).subscribe(story => {
-      this.story = story;
-      this.initForm();
-    });
+    this.progressService.start();
+    // this.storiesService.getById(this.story.id).subscribe(story => {
+    //   this.story = story;
+    //   this.initForm();
+    //   this.progressService.done();
+    // });
+    this.subscription = this.componentCommunicationService.getData().subscribe(data => this.story = data);
   }
 
   private initForm() {

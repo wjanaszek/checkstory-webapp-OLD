@@ -38,6 +38,8 @@ import { ChangePasswordValidationService } from './shared/services/change-passwo
 import { ConfirmDialogComponent } from './shared/confirm.dialog.component';
 import { DialogsService } from './shared/services/dialogs.service';
 import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.edit/story-detail.edit.component';
+import { NgProgressModule } from 'ngx-progressbar';
+import { ComponentCommunicationService } from './shared/services/component-communication.service';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,8 @@ import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.
     MatNativeDateModule,
     MatMenuModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
+    NgProgressModule
   ],
   exports: [
     ConfirmDialogComponent
@@ -89,7 +92,8 @@ import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.
     Md5,
     RegistrationValidationService,
     ChangePasswordValidationService,
-    DialogsService
+    DialogsService,
+    ComponentCommunicationService
   ],
   entryComponents: [
     ConfirmDialogComponent,

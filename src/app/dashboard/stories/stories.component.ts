@@ -7,6 +7,8 @@ import { User } from '../../shared/models/user.model';
 import { DialogsService } from '../../shared/services/dialogs.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { NgProgressService } from 'ngx-progressbar';
+import { ComponentCommunicationService } from '../../shared/services/component-communication.service';
 
 @Component({
   selector: 'app-stories',
@@ -21,17 +23,22 @@ export class StoriesComponent implements OnInit {
   constructor(private storiesService: StoriesService,
               private router: Router,
               private dialog: MatDialog,
-              private dialogsService: DialogsService) {
+              private dialogsService: DialogsService,
+              private componentsCommunicationService: ComponentCommunicationService,
+              public progressService: NgProgressService) {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
   }
 
   ngOnInit() {
+    this.progressService.start();
     this.stories = this.storiesService.getAll();
+    this.storiesService.getAll().subscribe(res => this.progressService.done());
     this.selectedStory = null;
   }
 
-  goToStoryDetails(id: number) {
-    this.router.navigate(['/dashboard/story-details', id]);
+  goToStoryDetails(story: Story) {
+    this.router.navigate(['/dashboard/story-details', story.id]);
+    this.componentsCommunicationService.sendData(story);
   }
 
   openAddStoryDialog() {
@@ -40,8 +47,9 @@ export class StoriesComponent implements OnInit {
     });
   }
 
-  editStory(id: number) {
-    this.router.navigate(['/dashboard/story-details', id, 'edit']);
+  editStory(story: Story) {
+    this.router.navigate(['/dashboard/story-details', story.id, 'edit']);
+    this.componentsCommunicationService.sendData(story);
   }
 
   openRemoveStoryDialog(story: Story) {
