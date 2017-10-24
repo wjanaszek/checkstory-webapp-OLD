@@ -29,9 +29,6 @@
         <input matInput [matDatepicker]="picker" placeholder="Start date" formControlName="startDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="addStoryForm.get('startDate').hasError('required') && addStoryForm.get('startDate').touched">
-          Start date is <strong>required</strong>
-        </mat-error>
       </mat-form-field>
     </div>
   </form>
