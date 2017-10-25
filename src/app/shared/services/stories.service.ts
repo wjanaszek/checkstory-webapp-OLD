@@ -41,7 +41,6 @@ export class StoriesService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log('story to update: ' + JSON.stringify(story));
-    story.longitude = Number(story.longitude);
     console.log('story to update: ' + JSON.stringify(story));
     return this.http.put(environment.apiUrl + `/api/stories/${story.id}`, JSON.stringify(story), { headers: headers })
       .map(res => res.json());
@@ -53,21 +52,18 @@ export class StoriesService {
     headers.append('Content-Type', 'application/json');
     console.log('sending: ' + JSON.stringify({
       title: story.title,
-      description: story.description,
-      latitude: story.latitude,
-      longitute: story.longitude,
-      startDate: story.startDate,
+      description: story.notes,
+      startDate: story.createDate,
       owner: currentUser,
       photos: []
     }));
     return this.http.post(environment.apiUrl + '/api/stories', JSON.stringify({
       title: story.title,
-      description: story.description,
-      latitude: story.latitude,
-      longitude: story.longitude,
-      startDate: story.startDate,
-      owner: currentUser,
-      photos: []
+      notes: story.notes,
+      createDate: story.createDate,
+      id: {
+        owner: currentUser
+      }
     }), jwt())
       .map((response: Response) => {
         const storyFromResponse = response.json();

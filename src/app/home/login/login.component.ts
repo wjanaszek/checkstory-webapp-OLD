@@ -14,7 +14,6 @@ import { errorObject } from 'rxjs/util/errorObject';
 })
 export class LoginComponent implements OnInit {
   loading = false;
-  returnUrl: string;
 
   loginForm: FormGroup;
 
@@ -34,9 +33,6 @@ export class LoginComponent implements OnInit {
 
     // reset login status
     this.authenticationService.logout();
-
-    // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   login() {

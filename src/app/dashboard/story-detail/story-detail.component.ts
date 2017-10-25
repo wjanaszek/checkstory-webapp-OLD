@@ -49,10 +49,10 @@ export class StoryDetailComponent implements OnInit {
   private initFormAndSetValues() {
     this.storyDetailForm = this.fb.group({
       title: [this.story.title],
-      description: [this.story.description],
+      notes: [this.story.notes],
       latitude: [this.story.latitude],
       longitude: [this.story.longitude],
-      startDate: [this.story.startDate]
+      createDate: [this.story.createDate]
     });
   }
 }

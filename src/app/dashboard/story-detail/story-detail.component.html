@@ -11,7 +11,7 @@
         <input matInput placeholder="Title" formControlName="title" readonly>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <textarea matInput placeholder="Description" formControlName="description" readonly></textarea>
+        <textarea matInput placeholder="Description" formControlName="notes" readonly></textarea>
       </mat-form-field>
       <mat-form-field class="full-width">
         <input matInput placeholder="Latitude" formControlName="latitude" readonly>
@@ -20,7 +20,7 @@
         <input matInput placeholder="Longitude" formControlName="longitude" readonly>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput [matDatepicker]="picker" placeholder="Start date" formControlName="startDate" readonly>
+        <input matInput [matDatepicker]="picker" placeholder="Create date" formControlName="createDate" readonly>
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>

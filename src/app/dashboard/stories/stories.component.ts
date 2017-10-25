@@ -72,10 +72,10 @@ export class AddStoryDialogComponent {
               private fb: FormBuilder) {
     this.addStoryForm = this.fb.group({
       title: ['', [Validators.required]],
-      description: [''],
+      notes: [''],
       latitude: ['', [Validators.required]],
       longitude: ['', [Validators.required]],
-      startDate: ['']
+      createDate: ['']
     });
   }
 
@@ -83,10 +83,10 @@ export class AddStoryDialogComponent {
     console.log('add dialog');
     this.data(new Story(
       this.addStoryForm.get('title').value,
-      this.addStoryForm.get('description').value,
+      this.addStoryForm.get('notes').value,
       this.addStoryForm.get('latitude').value,
       this.addStoryForm.get('longitude').value,
-      this.addStoryForm.get('startDate').value
+      this.addStoryForm.get('createDate').value
       )
     );
   }
