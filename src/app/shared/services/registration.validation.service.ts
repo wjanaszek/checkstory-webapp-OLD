@@ -10,6 +10,8 @@ import 'rxjs/add/operator/switchMap';
 @Injectable()
 export class RegistrationValidationService {
 
+  private emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
   constructor(private http: Http) { }
 
   // check(emails: Observable<string>) {
@@ -30,6 +32,10 @@ export class RegistrationValidationService {
     });
     return this.http.post(environment.apiUrl + '/api/users/checkEmail', email, { headers: requestHeaders })
       .map(res => res.json());
+  }
+
+  checkEmailRegex(email: string): boolean {
+    return this.emailRegex.test(email);
   }
 
   checkLoginNotTaken(login: string) {

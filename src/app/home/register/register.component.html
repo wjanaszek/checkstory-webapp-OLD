@@ -11,7 +11,7 @@
   <div class="col-md-12 register_field">
     <mat-form-field class="login full-width">
       <input matInput placeholder="Login" formControlName="login">
-      <mat-error *ngIf="registerForm.get('login').hasError('required') && registerForm.get('login').errors.loginTaken">
+      <mat-error *ngIf="!registerForm.get('login').pristine && registerForm.get('login').status === 'INVALID'">
         Login already in use
       </mat-error>
       <mat-error *ngIf="registerForm.get('login').hasError('required') && registerForm.get('login').touched">
@@ -26,7 +26,9 @@
     </div>
     <mat-form-field class="full-width">
       <input type="email" matInput placeholder="Email" formControlName="email">
-      <mat-error *ngIf="registerForm.get('email').errors && registerForm.get('email').errors.emailTaken">
+      <mat-error *ngIf="!registerForm.get('email').pristine
+          && registerForm.get('email').status === 'INVALID'
+          && registerForm.get('email').value !== ''">
         Email already in use
       </mat-error>
       <mat-error *ngIf="registerForm.get('email').hasError('required') && registerForm.get('email').touched">

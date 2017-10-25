@@ -25,7 +25,7 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.fb.group({
       login: ['', [Validators.required], this.validateLoginNotTaken.bind(this)],
-      email: ['', [Validators.email], this.validateEmailNotTaken.bind(this)],
+      email: ['', [Validators.required], this.validateEmailNotTaken.bind(this), this.validateEmail.bind(this)],
       password: ['', [Validators.required]],
       confirmPassword: ['', [Validators.required]]
     }, {
@@ -48,6 +48,10 @@ export class RegisterComponent implements OnInit {
     return this.registrationValidationService.checkEmailNotTaken(control.value).map(res => {
       return res ? null : { emailTaken: true };
     });
+  }
+
+  validateEmail(control: AbstractControl) {
+    return this.registrationValidationService.checkEmailRegex(control.value);
   }
 
   validateLoginNotTaken(control: AbstractControl) {
