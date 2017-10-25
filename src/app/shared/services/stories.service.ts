@@ -61,9 +61,7 @@ export class StoriesService {
       title: story.title,
       notes: story.notes,
       createDate: story.createDate,
-      id: {
-        owner: currentUser
-      }
+      owner: currentUser
     }), jwt())
       .map((response: Response) => {
         const storyFromResponse = response.json();
