@@ -34,7 +34,7 @@ export class StoryDetailEditComponent implements OnInit {
       notes: [this.story.notes],
       latitude: [this.story.latitude, [Validators.required]],
       longitude: [this.story.longitude, [Validators.required]],
-      startDate: [this.story.createDate]
+      createDate: [this.story.createDate]
     });
   }
 
