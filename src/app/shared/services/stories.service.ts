@@ -41,6 +41,8 @@ export class StoriesService {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
     console.log('story to update: ' + JSON.stringify(story));
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    story.owner = currentUser;
     story.longitude = Number(story.longitude);
     console.log('story to update: ' + JSON.stringify(story));
     return this.http.put(environment.apiUrl + `/api/stories/${story.id}`, JSON.stringify(story), { headers: headers })
