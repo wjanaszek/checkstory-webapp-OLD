@@ -31,7 +31,7 @@ export class StoryDetailEditComponent implements OnInit {
   private initForm() {
     this.editStoryForm = this.fb.group({
       title: [this.story.title, [Validators.required]],
-      description: [this.story.notes],
+      notes: [this.story.notes],
       latitude: [this.story.latitude, [Validators.required]],
       longitude: [this.story.longitude, [Validators.required]],
       startDate: [this.story.createDate]
@@ -53,7 +53,7 @@ export class StoryDetailEditComponent implements OnInit {
       this.story.title = this.editStoryForm.get('title').value;
     }
     if (this.editStoryForm.get('notes').value !== this.story.notes) {
-      this.story.notes = this.editStoryForm.get('ntoes').value;
+      this.story.notes = this.editStoryForm.get('notes').value;
     }
     if (this.editStoryForm.get('latitude').value !== this.story.latitude) {
       this.story.latitude = this.editStoryForm.get('latitude').value;
