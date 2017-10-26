@@ -38,6 +38,7 @@ import { ChangePasswordValidationService } from './shared/services/change-passwo
 import { ConfirmDialogComponent } from './shared/confirm.dialog.component';
 import { DialogsService } from './shared/services/dialogs.service';
 import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.edit/story-detail.edit.component';
+import { MessageService } from './shared/services/message.service';
 
 @NgModule({
   declarations: [
@@ -89,7 +90,8 @@ import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.
     Md5,
     RegistrationValidationService,
     ChangePasswordValidationService,
-    DialogsService
+    DialogsService,
+    MessageService
   ],
   entryComponents: [
     ConfirmDialogComponent,
