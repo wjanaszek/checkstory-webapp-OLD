@@ -8,7 +8,7 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+        <textarea matInput placeholder="Notes" formControlName="notes"></textarea>
       </mat-form-field>
       <mat-form-field class="full-width">
         <input matInput placeholder="Latitude" formControlName="latitude">
@@ -23,10 +23,10 @@
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width">
-        <input matInput [matDatepicker]="picker" placeholder="Start date" formControlName="startDate">
+        <input matInput [matDatepicker]="picker" placeholder="Create date" formControlName="startDate">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
-        <mat-error *ngIf="editStoryForm.get('startDate').hasError('required') && editStoryForm.get('startDate').touched">
+        <mat-error *ngIf="editStoryForm.get('createDate').hasError('required') && editStoryForm.get('createDate').touched">
           Start date is <strong>required</strong>
         </mat-error>
       </mat-form-field>

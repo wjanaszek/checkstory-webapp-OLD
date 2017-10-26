@@ -31,10 +31,10 @@ export class StoryDetailEditComponent implements OnInit {
   private initForm() {
     this.editStoryForm = this.fb.group({
       title: [this.story.title, [Validators.required]],
-      description: [this.story.description],
+      description: [this.story.notes],
       latitude: [this.story.latitude, [Validators.required]],
       longitude: [this.story.longitude, [Validators.required]],
-      startDate: [this.story.startDate]
+      startDate: [this.story.createDate]
     });
   }
 
@@ -52,8 +52,8 @@ export class StoryDetailEditComponent implements OnInit {
     if (this.editStoryForm.get('title').value !== this.story.title) {
       this.story.title = this.editStoryForm.get('title').value;
     }
-    if (this.editStoryForm.get('description').value !== this.story.description) {
-      this.story.description = this.editStoryForm.get('description').value;
+    if (this.editStoryForm.get('notes').value !== this.story.notes) {
+      this.story.notes = this.editStoryForm.get('ntoes').value;
     }
     if (this.editStoryForm.get('latitude').value !== this.story.latitude) {
       this.story.latitude = this.editStoryForm.get('latitude').value;
@@ -61,8 +61,8 @@ export class StoryDetailEditComponent implements OnInit {
     if (this.editStoryForm.get('longitude').value !== this.story.longitude) {
       this.story.longitude = this.editStoryForm.get('longitude').value;
     }
-    if (this.editStoryForm.get('startDate').value !== this.story.startDate) {
-      this.story.startDate = this.editStoryForm.get('startDate').value;
+    if (this.editStoryForm.get('createDate').value !== this.story.createDate) {
+      this.story.createDate = this.editStoryForm.get('createDate').value;
     }
     return this.story;
   }

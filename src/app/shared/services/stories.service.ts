@@ -53,19 +53,19 @@ export class StoriesService {
     headers.append('Content-Type', 'application/json');
     console.log('sending: ' + JSON.stringify({
       title: story.title,
-      description: story.description,
+      notes: story.notes,
       latitude: story.latitude,
-      longitute: story.longitude,
-      startDate: story.startDate,
+      longitude: story.longitude,
+      createDate: story.createDate,
       owner: currentUser,
       photos: []
     }));
     return this.http.post(environment.apiUrl + '/api/stories', JSON.stringify({
       title: story.title,
-      description: story.description,
+      notes: story.notes,
       latitude: story.latitude,
       longitude: story.longitude,
-      startDate: story.startDate,
+      createDate: story.createDate,
       owner: currentUser,
       photos: []
     }), jwt())
