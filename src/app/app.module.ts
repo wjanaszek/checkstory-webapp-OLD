@@ -16,7 +16,7 @@ import { fakeBackendProvider } from './helpers/fake-backend';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import {
-  MatButtonModule, MatDatepickerModule,
+  MatButtonModule, MatCardModule, MatDatepickerModule,
   MatDialogModule,
   MatFormFieldModule,
   MatInputModule,
@@ -65,6 +65,7 @@ import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatCardModule,
     MatTooltipModule,
     MatListModule,
     MatDialogModule,
