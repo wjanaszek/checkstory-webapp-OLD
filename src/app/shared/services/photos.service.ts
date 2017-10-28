@@ -3,13 +3,14 @@ import { Observable } from 'rxjs/Observable';
 import { Photo } from '../models/photo.model';
 import { environment } from '../../../environments/environment';
 import { Http, Headers, URLSearchParams } from '@angular/http';
+import { PhotosList } from '../models/photos.list.model';
 
 @Injectable()
 export class PhotosService {
 
   constructor(private http: Http) { }
 
-  getAll(storyNumber: number): Observable<Photo[]> {
+  getAll(storyNumber: number): Observable<PhotosList> {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');

@@ -38,6 +38,8 @@ import { ChangePasswordValidationService } from './shared/services/change-passwo
 import { ConfirmDialogComponent } from './shared/confirm.dialog.component';
 import { DialogsService } from './shared/services/dialogs.service';
 import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.edit/story-detail.edit.component';
+import { PhotosService } from './shared/services/photos.service';
+import { PhotoListComponent } from './dashboard/story-detail/photo-list/photo-list.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +57,8 @@ import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.
     PageNotFoundComponent,
     AddStoryDialogComponent,
     ConfirmDialogComponent,
-    StoryDetailEditComponent
+    StoryDetailEditComponent,
+    PhotoListComponent
   ],
   imports: [
     routing,
@@ -90,7 +93,8 @@ import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.
     Md5,
     RegistrationValidationService,
     ChangePasswordValidationService,
-    DialogsService
+    DialogsService,
+    PhotosService
   ],
   entryComponents: [
     ConfirmDialogComponent,

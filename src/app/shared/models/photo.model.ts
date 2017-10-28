@@ -4,7 +4,7 @@ export class Photo {
   owner_id: number;
   originalPhoto: string;
   createDate: string;
-  updateDate: string;
+  updateDate?: string;
   imageType: string;
   content: string;
 

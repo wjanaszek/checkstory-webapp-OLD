@@ -1,0 +1,7 @@
+<mat-card-content>
+  aaaaaa
+  <div *ngFor="let photo of storyPhotos; let i = index">
+    Photo no {{ i + 1 }}
+    <img [src]="'data:image/png;base64,' + photo.content">
+  </div>
+</mat-card-content>
