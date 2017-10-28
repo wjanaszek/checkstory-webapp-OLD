@@ -1,0 +1,15 @@
+<h3 mat-dialog-title>
+  Add photo to story
+</h3>
+<mat-dialog-content>
+  <form novalidate [formGroup]="addPhotoForm">
+    Browse:
+    <input type="file" accept=".jpg, .png, .jpeg" (change)="onFileChange($event)" #fileInput/>
+    <mat-checkbox [disabled]="data.isOriginal" color="primary">Original</mat-checkbox>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="button" mat-button (click)="upload()" [disabled]="addPhotoForm.invalid || loading">Submit</button>
+  <button type="button" mat-button (click)="clearFile()" [disabled]="addPhotoForm.get('photo').value === null">Remove file</button>
+  <button type="button" mat-button (click)="dialogRef.close()">Cancel</button>
+</mat-dialog-actions>

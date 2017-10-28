@@ -19,4 +19,10 @@ export class Story {
     this.createDate = createDate;
     this.owner = owner;
   }
+
+  containsOriginalPhoto(): boolean {
+    const searchedPhoto = new Photo();
+    searchedPhoto.originalPhoto = 't';
+    return this.photos.indexOf(searchedPhoto) !== -1 ? true : false;
+  }
 }

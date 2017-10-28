@@ -21,14 +21,15 @@ import {
   MatFormFieldModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule, MatNativeDateModule,
+  MatMenuModule, MatNativeDateModule, MatProgressSpinnerModule,
   MatTabsModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatCheckboxModule
 } from '@angular/material';
 import { routing } from './app.routes';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { ChangePasswordDialogComponent, MyAccountComponent } from './dashboard/myaccount/myaccount.component';
-import { StoryDetailComponent } from './dashboard/story-detail/story-detail.component';
+import { AddPhotoDialogComponent, StoryDetailComponent } from './dashboard/story-detail/story-detail.component';
 import { AboutComponent } from './dashboard/about/about.component';
 import { StoriesService } from './shared/services/stories.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -58,7 +59,8 @@ import { PhotoListComponent } from './dashboard/story-detail/photo-list/photo-li
     AddStoryDialogComponent,
     ConfirmDialogComponent,
     StoryDetailEditComponent,
-    PhotoListComponent
+    PhotoListComponent,
+    AddPhotoDialogComponent
   ],
   imports: [
     routing,
@@ -69,6 +71,7 @@ import { PhotoListComponent } from './dashboard/story-detail/photo-list/photo-li
     MatInputModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatTooltipModule,
     MatListModule,
     MatDialogModule,
@@ -76,8 +79,9 @@ import { PhotoListComponent } from './dashboard/story-detail/photo-list/photo-li
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
-    HttpModule
+    HttpModule,
   ],
   exports: [
     ConfirmDialogComponent
@@ -99,7 +103,8 @@ import { PhotoListComponent } from './dashboard/story-detail/photo-list/photo-li
   entryComponents: [
     ConfirmDialogComponent,
     ChangePasswordDialogComponent,
-    AddStoryDialogComponent
+    AddStoryDialogComponent,
+    AddPhotoDialogComponent
   ],
   bootstrap: [ AppComponent ]
 })

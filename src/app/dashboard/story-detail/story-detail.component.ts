@@ -1,13 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { StoriesService } from '../../shared/services/stories.service';
 import { Story } from '../../shared/models/story.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DialogsService } from '../../shared/services/dialogs.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PhotosService } from '../../shared/services/photos.service';
-import { Photo } from '../../shared/models/photo.model';
-import { Observable } from 'rxjs/Observable';
-import { PhotosList } from '../../shared/models/photos.list.model';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-story-detail',
@@ -18,15 +16,14 @@ export class StoryDetailComponent implements OnInit {
   story: Story;
   editing: boolean;
   storyDetailForm: FormGroup;
-  photos$: Observable<PhotosList>;
-  storyPhotos: Photo[] = [];
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private dialogsService: DialogsService,
               private fb: FormBuilder,
               private storiesService: StoriesService,
-              private photosService: PhotosService) {
+              private photosService: PhotosService,
+              public dialog: MatDialog) {
     this.editing = false;
     this.story = new Story();
   }
@@ -36,10 +33,6 @@ export class StoryDetailComponent implements OnInit {
     this.storiesService.getById(this.story.id).subscribe(story => {
       this.story = story;
       this.initFormAndSetValues();
-    });
-    this.photos$ = this.photosService.getAll(this.story.id);
-    this.photos$.subscribe(data => {
-      this.prepareImages(data);
     });
   }
 
@@ -57,8 +50,13 @@ export class StoryDetailComponent implements OnInit {
       });
   }
 
-  addPhoto(story: Story) {
-
+  openAddPhotoDialog(story: Story) {
+    this.dialog.open(AddPhotoDialogComponent, {
+      data: {
+        addPhoto: this.addPhoto.bind(this),
+        isOriginal: story.containsOriginalPhoto
+      }
+    });
   }
 
   private initFormAndSetValues() {
@@ -71,9 +69,53 @@ export class StoryDetailComponent implements OnInit {
     });
   }
 
-  private prepareImages(data: PhotosList) {
-    for (const p of data.photos) {
-      this.storyPhotos.push(p);
+  private addPhoto(event) {
+
+  }
+}
+
+@Component({
+  templateUrl: './add.photo.dialog.component.html'
+})
+export class AddPhotoDialogComponent {
+
+  addPhotoForm: FormGroup;
+  loading: boolean = false;
+
+  @ViewChild('fileInout')
+  fileInput: ElementRef;
+
+  constructor(public dialogRef: MatDialogRef<AddPhotoDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder) {
+    this.addPhotoForm = this.fb.group({
+      photo: null,
+      createDate: [''],
+      originalPhoto: [data.isOriginal],
+    });
+  }
+
+  onFileChange(event) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.addPhotoForm.get('photo').setValue({
+          type: file.type,
+          size: file.size,
+          createDate: file.createDate,
+          content: reader.result.split(',')[1]
+        });
+      };
     }
+  }
+
+  upload() {
+    this.loading = true;
+    setTimeout(() => ( this.loading = false ), 1000);
+  }
+
+  clearFile() {
+    this.addPhotoForm.get('photo').setValue(null);
+    this.fileInput.nativeElement.value = '';
   }
 }

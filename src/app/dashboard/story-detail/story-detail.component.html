@@ -5,7 +5,7 @@
   <button mat-button type="button" (click)="openRemoveStoryDialog(story)">
     <i class="material-icons">clear</i>
   </button>
-  <button mat-button type="button" (click)="addPhoto(story)">
+  <button mat-button type="button" (click)="openAddPhotoDialog(story)">
     <i class="material-icons">add_circle</i> Add photo
   </button>
   <form novalidate [formGroup]="storyDetailForm">
@@ -29,7 +29,7 @@
       </mat-form-field>
     </div>
   </form>
-  <app-photo-list [storyPhotos]="storyPhotos"></app-photo-list>
+  <app-photo-list></app-photo-list>
 </div>
 <div *ngIf="!storyDetailForm">
   Loading...
