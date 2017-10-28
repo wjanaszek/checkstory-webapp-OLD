@@ -6,6 +6,7 @@ import { DialogsService } from '../../shared/services/dialogs.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PhotosService } from '../../shared/services/photos.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
+import { Photo } from '../../shared/models/photo.model';
 
 @Component({
   selector: 'app-story-detail',
@@ -54,7 +55,9 @@ export class StoryDetailComponent implements OnInit {
     this.dialog.open(AddPhotoDialogComponent, {
       data: {
         addPhoto: this.addPhoto.bind(this),
-        isOriginal: story.containsOriginalPhoto
+        isOriginal: this.containsOriginalPhoto,
+        storyNumber: this.story.id,
+        owner_id: this.story.owner.id
       }
     });
   }
@@ -70,7 +73,14 @@ export class StoryDetailComponent implements OnInit {
   }
 
   private addPhoto(event) {
+    this.photosService.create(event);
+    console.log(JSON.stringify(event));
+  }
 
+  private containsOriginalPhoto(): boolean {
+    const searchedPhoto = new Photo();
+    searchedPhoto.originalPhoto = 't';
+    return this.story.photos.indexOf(searchedPhoto) !== -1 ? true : false;
   }
 }
 
@@ -82,7 +92,7 @@ export class AddPhotoDialogComponent {
   addPhotoForm: FormGroup;
   loading: boolean = false;
 
-  @ViewChild('fileInout')
+  @ViewChild('fileInput')
   fileInput: ElementRef;
 
   constructor(public dialogRef: MatDialogRef<AddPhotoDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, private fb: FormBuilder) {
@@ -100,7 +110,7 @@ export class AddPhotoDialogComponent {
       reader.readAsDataURL(file);
       reader.onload = () => {
         this.addPhotoForm.get('photo').setValue({
-          type: file.type,
+          type: file.type.split('/')[1],
           size: file.size,
           createDate: file.createDate,
           content: reader.result.split(',')[1]
@@ -111,7 +121,17 @@ export class AddPhotoDialogComponent {
 
   upload() {
     this.loading = true;
-    setTimeout(() => ( this.loading = false ), 1000);
+    this.data.addPhoto(new Photo(
+      this.data.storyNumber,
+      this.data.owner_id,
+      'false',
+      // this.addPhotoForm.get('originalPhoto').value,
+      // this.addPhotoForm.get('photo').value.createDate,
+  ﻿   '2017-10-21 00:00:00',
+      null,
+      this.addPhotoForm.get('photo').value.type,
+      this.addPhotoForm.get('photo').value.content
+    ));
   }
 
   clearFile() {

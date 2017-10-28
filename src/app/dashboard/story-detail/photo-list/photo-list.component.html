@@ -1,6 +1,6 @@
 <mat-card-content>
   <div *ngFor="let photo of storyPhotos; let i = index">
     Photo no {{ i + 1 }} <span *ngIf="photo.originalPhoto === 't'"><strong>[ORIGINAL]</strong></span>
-    <img [src]="'data:image/png;base64,' + photo.content">
+    <img [src]="'data:image/' + photo.imageType + ';base64,' + photo.content">
   </div>
 </mat-card-content>

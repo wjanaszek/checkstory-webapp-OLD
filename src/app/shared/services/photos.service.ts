@@ -30,7 +30,7 @@ export class PhotosService {
   create(photo: Photo) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post(environment.apiUrl + `/api/stories/${photo.storyNumber}/photos`, headers)
+    return this.http.post(environment.apiUrl + `/api/stories/${photo.storyNumber}/photos`, JSON.stringify(photo), { headers: headers })
       .map(res => res.json());
   }
 
