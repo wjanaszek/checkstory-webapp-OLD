@@ -132,6 +132,7 @@ export class AddPhotoDialogComponent {
       this.addPhotoForm.get('photo').value.type,
       this.addPhotoForm.get('photo').value.content
     ));
+    this.dialogRef.close();
   }
 
   clearFile() {
