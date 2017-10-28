@@ -23,7 +23,7 @@ export class PhotosService {
   getById(photoNumber: number, storyNumber: number): Observable<Photo> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.get(environment.apiUrl + `/api/stories/${storyNumber}/photos/${photoNumber}`, headers)
+    return this.http.get(environment.apiUrl + `/api/stories/${storyNumber}/photos/${photoNumber}`, { headers: headers })
       .map(res => res.json());
   }
 
@@ -37,14 +37,14 @@ export class PhotosService {
   delete(photoNumber: number, storyNumber: number) {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.delete(environment.apiUrl + `/api/stories/${storyNumber}/photos/${photoNumber}`, headers)
+    return this.http.delete(environment.apiUrl + `/api/stories/${storyNumber}/photos/${photoNumber}`, { headers: headers })
       .map(res => res.json());
   }
 
   update(photo: Photo): Observable<Photo> {
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.put(environment.apiUrl + `/api/stories/${photo.storyNumber}/photos/${photo.photoNumber}`, JSON.stringify(photo), headers)
+    return this.http.put(environment.apiUrl + `/api/stories/${photo.storyNumber}/photos/${photo.photoNumber}`, JSON.stringify(photo), { headers: headers })
       .map(res => res.json());
   }
 }
