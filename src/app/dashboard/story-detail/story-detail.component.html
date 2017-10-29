@@ -1,13 +1,13 @@
 <div *ngIf="storyDetailForm">
-  <button mat-button type="button" (click)="editStory(story.id)">
-    <i class="material-icons">mode_edit</i>
-  </button>
-  <button mat-button type="button" (click)="openRemoveStoryDialog(story)">
-    <i class="material-icons">clear</i>
-  </button>
-  <button mat-button type="button" (click)="openAddPhotoDialog(story)">
-    <i class="material-icons">add_circle</i> Add photo
-  </button>
+  <!--<button mat-button type="button" (click)="editStory(story.id)">-->
+    <!--<i class="material-icons">mode_edit</i>-->
+  <!--</button>-->
+  <!--<button mat-button type="button" (click)="openRemoveStoryDialog(story)">-->
+    <!--<i class="material-icons">clear</i>-->
+  <!--</button>-->
+  <!--<button mat-button type="button" (click)="openAddPhotoDialog(story)">-->
+    <!--<i class="material-icons">add_circle</i> Add photo-->
+  <!--</button>-->
   <mat-card>
     <mat-card-header>
       <mat-card-title>
@@ -62,6 +62,17 @@
         <!--</div>-->
       <!--</form>-->
     </mat-card-content>
+    <mat-card-actions>
+      <button mat-button type="button" (click)="editStory(story.id)">
+        <i matTooltip="Edit story" class="material-icons">mode_edit</i>
+      </button>
+      <button mat-button type="button" (click)="openRemoveStoryDialog(story)">
+        <i matTooltip="Remove story" class="material-icons">clear</i>
+      </button>
+      <button mat-button type="button" (click)="openAddPhotoDialog(story)">
+        <i class="material-icons">add_circle</i> Add photo
+      </button>
+    </mat-card-actions>
   </mat-card>
   <app-photo-list></app-photo-list>
 </div>
