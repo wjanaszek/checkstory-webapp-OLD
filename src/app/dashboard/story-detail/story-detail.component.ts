@@ -99,7 +99,7 @@ export class AddPhotoDialogComponent {
     this.addPhotoForm = this.fb.group({
       photo: null,
       createDate: [''],
-      originalPhoto: [data.isOriginal],
+      isOriginal: [data.isOriginal],
     });
   }
 
@@ -124,7 +124,7 @@ export class AddPhotoDialogComponent {
     this.data.addPhoto(new Photo(
       this.data.storyNumber,
       this.data.owner_id,
-      'false',
+      `${this.addPhotoForm.get('isOriginal').value}`,
       // this.addPhotoForm.get('originalPhoto').value,
       // this.addPhotoForm.get('photo').value.createDate,
   ﻿   '2017-10-21 00:00:00',

@@ -55,7 +55,6 @@ export class StoriesComponent implements OnInit {
   }
 
   addStory(event) {
-    console.log('adding: ' + JSON.stringify(event));
     this.storiesService.add(event);
   }
 }

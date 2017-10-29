@@ -40,7 +40,7 @@ import { ConfirmDialogComponent } from './shared/confirm.dialog.component';
 import { DialogsService } from './shared/services/dialogs.service';
 import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.edit/story-detail.edit.component';
 import { PhotosService } from './shared/services/photos.service';
-import { PhotoListComponent } from './dashboard/story-detail/photo-list/photo-list.component';
+import { EditPhotoDialogComponent, PhotoListComponent } from './dashboard/story-detail/photo-list/photo-list.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +60,8 @@ import { PhotoListComponent } from './dashboard/story-detail/photo-list/photo-li
     ConfirmDialogComponent,
     StoryDetailEditComponent,
     PhotoListComponent,
-    AddPhotoDialogComponent
+    AddPhotoDialogComponent,
+    EditPhotoDialogComponent
   ],
   imports: [
     routing,
@@ -104,7 +105,8 @@ import { PhotoListComponent } from './dashboard/story-detail/photo-list/photo-li
     ConfirmDialogComponent,
     ChangePasswordDialogComponent,
     AddStoryDialogComponent,
-    AddPhotoDialogComponent
+    AddPhotoDialogComponent,
+    EditPhotoDialogComponent
   ],
   bootstrap: [ AppComponent ]
 })

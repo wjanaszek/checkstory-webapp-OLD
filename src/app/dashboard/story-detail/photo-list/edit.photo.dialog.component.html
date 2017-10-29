@@ -1,0 +1,17 @@
+<h3 mat-dialog-title>
+  Edit photo
+</h3>
+<mat-dialog-content>
+  <form novalidate [formGroup]="editPhotoForm">
+    Current photo:
+    <img [src]="'data:image/' + data.photo.imageType + ';base64,' + data.photo.content" width="500" height="300">
+    Browse:
+    <input type="file" accept=".jpg, .png, .jpeg" (change)="onFileChange($event)" #fileInput/>
+    <mat-checkbox color="primary" [checked]="data.isOriginal" formControlName="isOriginal">Original</mat-checkbox>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button type="button" mat-button (click)="upload()" [disabled]="editPhotoForm.invalid || loading">Save changes</button>
+  <button type="button" mat-button (click)="clearFile()" [disabled]="editPhotoForm.get('updatePhoto').value === null">Remove file</button>
+  <button type="button" mat-button (click)="dialogRef.close()">Cancel</button>
+</mat-dialog-actions>
