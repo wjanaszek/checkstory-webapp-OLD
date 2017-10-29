@@ -35,6 +35,10 @@ export class DashboardComponent implements OnInit {
       });
   }
 
+  openChangePasswordDialog() {
+    console.log('change password here?');
+  }
+
   private goLogout() {
     this.authenticationService.logout();
     this.router.navigate(['/home']);

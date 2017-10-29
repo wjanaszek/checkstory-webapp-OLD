@@ -21,12 +21,13 @@
     About
   </a>
   <button
-    mat-button
+    mat-icon-button
     type="button"
     [matMenuTriggerFor]="logoutMenu">
-    <i class="material-icons">person_pin</i>
+    <i class="material-icons">account_circle</i>
   </button>
   <mat-menu #logoutMenu="matMenu">
+    <button mat-menu-item (click)="openChangePasswordDialog()">Change password</button>
     <button mat-menu-item (click)="openConfirmDialog()">Logout</button>
   </mat-menu>
 </nav>

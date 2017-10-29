@@ -24,7 +24,7 @@ import {
   MatMenuModule, MatNativeDateModule, MatProgressSpinnerModule,
   MatTabsModule,
   MatTooltipModule,
-  MatCheckboxModule
+  MatCheckboxModule, MatIconModule
 } from '@angular/material';
 import { routing } from './app.routes';
 import { WelcomeComponent } from './home/welcome/welcome.component';
@@ -41,6 +41,8 @@ import { DialogsService } from './shared/services/dialogs.service';
 import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.edit/story-detail.edit.component';
 import { PhotosService } from './shared/services/photos.service';
 import { EditPhotoDialogComponent, PhotoListComponent } from './dashboard/story-detail/photo-list/photo-list.component';
+import { NgProgressBrowserXhr, NgProgressModule } from 'ngx-progressbar';
+import { BrowserXhr } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,7 @@ import { EditPhotoDialogComponent, PhotoListComponent } from './dashboard/story-
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    MatIconModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
@@ -83,6 +86,7 @@ import { EditPhotoDialogComponent, PhotoListComponent } from './dashboard/story-
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     HttpModule,
+    NgProgressModule
   ],
   exports: [
     ConfirmDialogComponent
@@ -99,7 +103,8 @@ import { EditPhotoDialogComponent, PhotoListComponent } from './dashboard/story-
     RegistrationValidationService,
     ChangePasswordValidationService,
     DialogsService,
-    PhotosService
+    PhotosService,
+    { provide: BrowserXhr, useClass: NgProgressBrowserXhr }
   ],
   entryComponents: [
     ConfirmDialogComponent,

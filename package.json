@@ -26,6 +26,7 @@
     "base64-img": "^1.0.3",
     "core-js": "^2.4.1",
     "intl": "^1.2.5",
+    "ngx-progressbar": "^2.1.1",
     "rxjs": "^5.4.2",
     "web-animations-js": "^2.3.1",
     "zone.js": "^0.8.14"

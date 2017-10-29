@@ -7,6 +7,8 @@ import { User } from '../../shared/models/user.model';
 import { DialogsService } from '../../shared/services/dialogs.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
+import { Photo } from '../../shared/models/photo.model';
+import { PhotosService } from '../../shared/services/photos.service';
 
 @Component({
   selector: 'app-stories',
@@ -21,7 +23,8 @@ export class StoriesComponent implements OnInit {
   constructor(private storiesService: StoriesService,
               private router: Router,
               private dialog: MatDialog,
-              private dialogsService: DialogsService) {
+              private dialogsService: DialogsService,
+              private photosService: PhotosService) {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
   }
 
@@ -56,6 +59,22 @@ export class StoriesComponent implements OnInit {
 
   addStory(event) {
     this.storiesService.add(event);
+  }
+
+  getOriginalStoryPhoto(story: Story): Photo {
+    const searchedPhoto = new Photo();
+    searchedPhoto.originalPhoto = 't';
+    let photos: Photo[];
+    this.photosService.getAll(story.id).subscribe(data => {
+      photos = data.photos;
+      const index = photos.indexOf(searchedPhoto);
+      if (index !== -1) {
+        return photos[index];
+      } else {
+        return null;
+      }
+    });
+    return null;
   }
 }
 

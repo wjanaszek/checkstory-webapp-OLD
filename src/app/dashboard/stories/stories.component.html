@@ -1,25 +1,24 @@
-<div *ngIf="!stories">
-  You don't have any stories yet
-</div>
 <div class="col-md-12">
-  <ul id="thumbnailsStoriesList">
-    <li *ngFor="let story of stories | async">
-      <strong>{{ story.title }}</strong>
-      <img class="tn" width="191" height="146" (click)="goToStoryDetails(story.id)">
-      <div>
-        {{ story.latitude }}, {{ story.longitude }}
+  <mat-list>
+    <mat-list-item *ngFor="let story of stories | async">
+      <!--<img class="tn" width="15" height="10" [src]="'data:image/' + getOriginalStoryPhoto(story).imageType + ';base64,' + getOriginalStoryPhoto(story).content">-->
+      <mat-icon matListIcon (click)="goToStoryDetails(story.id)">folder</mat-icon>
+      <h3 matLine (click)="goToStoryDetails(story.id)"><strong>{{ story.title }}</strong></h3>
+      <div matLine (click)="goToStoryDetails(story.id)">
+        ({{ story.latitude }}, {{ story.longitude }})
+        <span *ngIf="story.createDate">
+          , created: {{ story.createDate }}
+        </span>
       </div>
-      <div *ngIf="story.createDate">
-        {{ story.createDate }}
-      </div>
-      <button mat-button type="button" (click)="editStory(story.id)">
+      <div>Actions:</div>
+      <button matTooltip="Edit story" mat-icon-button type="button" (click)="editStory(story.id)">
         <i class="material-icons">mode_edit</i>
       </button>
-      <button mat-button type="button" (click)="openRemoveStoryDialog(story)">
+      <button matTooltip="Remove story" mat-icon-button type="button" (click)="openRemoveStoryDialog(story)">
         <i class="material-icons">clear</i>
       </button>
-    </li>
-  </ul>
+    </mat-list-item>
+  </mat-list>
   <button mat-button type="button" (click)="openAddStoryDialog()">
     <i class="material-icons">add_circle</i> Add story
   </button>
