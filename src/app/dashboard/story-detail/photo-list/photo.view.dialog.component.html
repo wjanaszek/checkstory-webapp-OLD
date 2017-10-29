@@ -1,0 +1,9 @@
+<h3 mat-dialog-title>Photo</h3>
+<mat-dialog-content>
+  <div *ngIf="photo">
+    <img [src]="'data:image/' + photo.imageType + ';base64,' + photo.content">
+  </div>
+  <div *ngIf="!photo">
+    Loading...
+  </div>
+</mat-dialog-content>

@@ -40,7 +40,7 @@ import { ConfirmDialogComponent } from './shared/confirm.dialog.component';
 import { DialogsService } from './shared/services/dialogs.service';
 import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.edit/story-detail.edit.component';
 import { PhotosService } from './shared/services/photos.service';
-import { EditPhotoDialogComponent, PhotoListComponent } from './dashboard/story-detail/photo-list/photo-list.component';
+import { EditPhotoDialogComponent, PhotoListComponent, PhotoViewDialogComponent } from './dashboard/story-detail/photo-list/photo-list.component';
 import { NgProgressBrowserXhr, NgProgressModule } from 'ngx-progressbar';
 import { BrowserXhr } from '@angular/http';
 
@@ -63,7 +63,8 @@ import { BrowserXhr } from '@angular/http';
     StoryDetailEditComponent,
     PhotoListComponent,
     AddPhotoDialogComponent,
-    EditPhotoDialogComponent
+    EditPhotoDialogComponent,
+    PhotoViewDialogComponent
   ],
   imports: [
     routing,
@@ -111,7 +112,8 @@ import { BrowserXhr } from '@angular/http';
     ChangePasswordDialogComponent,
     AddStoryDialogComponent,
     AddPhotoDialogComponent,
-    EditPhotoDialogComponent
+    EditPhotoDialogComponent,
+    PhotoViewDialogComponent
   ],
   bootstrap: [ AppComponent ]
 })

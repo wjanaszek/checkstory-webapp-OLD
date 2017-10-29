@@ -48,6 +48,12 @@ export class PhotoListComponent implements OnInit {
       });
   }
 
+  openBigPhoto(photo: Photo) {
+    this.dialog.open(PhotoViewDialogComponent, {
+      data: photo
+    });
+  }
+
   private updatePhoto(event) {
     this.photosService.update(event);
   }
@@ -119,5 +125,17 @@ export class EditPhotoDialogComponent {
   clearFile() {
     this.editPhotoForm.get('updatePhoto').setValue(null);
     this.fileInput.nativeElement.value = '';
+  }
+}
+
+@Component({
+  templateUrl: './photo.view.dialog.component.html'
+})
+export class PhotoViewDialogComponent {
+
+  photo: Photo;
+
+  constructor(public dialogRef: MatDialogRef<PhotoViewDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
+    this.photo = data;
   }
 }
