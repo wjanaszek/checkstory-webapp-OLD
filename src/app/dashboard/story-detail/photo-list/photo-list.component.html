@@ -1,6 +1,6 @@
 <mat-list>
   <mat-list-item *ngFor="let photo of storyPhotos; let i = index">
-    <img matListAvatar [src]="'data:image/' + photo.imageType + ';base64,' + photo.content" width="50" height="30" (click)="openBigPhoto(photo)">
+    <img [src]="'data:image/' + photo.imageType + ';base64,' + photo.content" width="75" height="45" (click)="openBigPhoto(photo)">
     <h3 matLine (click)="openBigPhoto(photo)" matTooltip="Show photo">
       Photo no {{ i + 1 }} <span *ngIf="photo.originalPhoto === 't'"><strong>[ORIGINAL]</strong></span>
     </h3>

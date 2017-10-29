@@ -13,17 +13,16 @@ import { errorObject } from 'rxjs/util/errorObject';
   host: { '[@fadeInAnimation]': '' }
 })
 export class LoginComponent implements OnInit {
-  loading = false;
-  returnUrl: string;
 
   loginForm: FormGroup;
+  apiError: boolean;
 
   constructor(
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
-    private authenticationService: AuthenticationService
-  ) { }
+      private fb: FormBuilder,
+      private router: Router,
+      private authenticationService: AuthenticationService) {
+    this.apiError = false;
+  }
 
   ngOnInit() {
     // create form
@@ -36,21 +35,21 @@ export class LoginComponent implements OnInit {
     this.authenticationService.logout();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   login() {
     console.log('logging: ' + this.loginForm.get('login').value + ', ' + this.loginForm.get('password').value);
-    this.loading = true;
     this.authenticationService.login(this.loginForm.get('login').value, this.loginForm.get('password').value)
       .subscribe(
         data => {
           console.log('logged in user: ' + JSON.stringify(data));
+          this.apiError = false;
           this.router.navigate(['dashboard/story-list']);
         },
         error => {
           console.log('error: ' + JSON.stringify(error));
-          this.loading = false;
+          this.apiError = true;
         }
       );
   }

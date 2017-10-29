@@ -30,6 +30,10 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
+      <div>
+        <p>Add original photo of this place</p>
+        <input type="file" accept=".jpg, .png, .jpeg" (change)="onFileChange($event)" #fileInput/>
+      </div>
     </div>
   </form>
 </mat-dialog-content>

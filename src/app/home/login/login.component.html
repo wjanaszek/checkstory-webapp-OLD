@@ -31,5 +31,8 @@
     <button mat-button type="submit" class="signup_btn" (click)="login()" [disabled]="loginForm.invalid || loginForm.pristine">
       Login
     </button>
+    <div *ngIf="apiError" class="mat-error">
+      Login or password incorrect
+    </div>
   </div>
 </mat-card-actions>

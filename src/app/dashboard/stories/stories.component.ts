@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewChild, ElementRef } from '@angular/core';
 import { StoriesService } from '../../shared/services/stories.service';
 import { Story } from '../../shared/models/story.model';
 import { Router } from '@angular/router';
@@ -39,7 +39,9 @@ export class StoriesComponent implements OnInit {
 
   openAddStoryDialog() {
     const dialogRef = this.dialog.open(AddStoryDialogComponent, {
-      data: this.addStory.bind(this)
+      data: {
+        addStory: this.addStory.bind(this)
+      }
     });
   }
 
@@ -84,28 +86,74 @@ export class StoriesComponent implements OnInit {
 export class AddStoryDialogComponent {
 
   addStoryForm: FormGroup;
+  loading: boolean;
+
+  @ViewChild('fileInput')
+  fileInput: ElementRef;
 
   constructor(public dialogRef: MatDialogRef<AddStoryDialogComponent>,
               @Inject(MAT_DIALOG_DATA) public data: any,
               private fb: FormBuilder) {
+    this.loading = false;
     this.addStoryForm = this.fb.group({
       title: ['', [Validators.required]],
       notes: [''],
       latitude: ['', [Validators.required]],
       longitude: ['', [Validators.required]],
-      createDate: ['']
+      createDate: [''],
+      photo: null
     });
   }
 
   addStory() {
     console.log('add dialog');
-    this.data(new Story(
+    const storyToSave = new Story(
       this.addStoryForm.get('title').value,
       this.addStoryForm.get('notes').value,
       this.addStoryForm.get('latitude').value,
       this.addStoryForm.get('longitude').value,
       this.addStoryForm.get('createDate').value
-      )
     );
+    if (this.addStoryForm.get('photo').value !== null) {
+      storyToSave.photos.push(new Photo());
+    }
+    this.data.addStory(storyToSave);
+  }
+
+  onFileChange(event) {
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length > 0) {
+      const file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.addStoryForm.get('photo').setValue({
+          type: file.type.split('/')[1],
+          size: file.size,
+          createDate: file.createDate,
+          content: reader.result.split(',')[1]
+        });
+      };
+    }
+  }
+
+  upload() {
+    this.loading = true;
+    this.data.addPhoto(new Photo(
+      this.data.storyNumber,
+      this.data.owner_id,
+      `${this.addStoryForm.get('isOriginal').value}`,
+    // this.addPhotoForm.get('originalPhoto').value,
+    // this.addPhotoForm.get('photo').value.createDate,
+  ﻿   '2017-10-21 00:00:00',
+      null,
+      this.addStoryForm.get('photo').value.type,
+      this.addStoryForm.get('photo').value.content
+  ));
+    this.dialogRef.close();
+  }
+
+  clearFile() {
+    this.addStoryForm.get('photo').setValue(null);
+    this.fileInput.nativeElement.value = '';
   }
 }
