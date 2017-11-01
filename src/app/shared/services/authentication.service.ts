@@ -12,14 +12,11 @@ export class AuthenticationService {
 
   login(login: string, password: string) {
     const hashedPassword = Md5.hashStr(password);
-    console.log('hashed password: ' + hashedPassword);
     const headers = new Headers({
       'Content-Type': 'application/json'});
     return this.http.post(environment.apiUrl + '/login', JSON.stringify({ login: login, password: hashedPassword }), { headers: headers })
       .map((res: Response) => {
-        console.log('headers: ' + JSON.stringify(res));
         const authorization = res.headers.get('Authorization');
-        console.log(authorization);
         if (authorization !== null) {
           localStorage.setItem('jwt-token', authorization.slice(7));
         }
@@ -28,8 +25,7 @@ export class AuthenticationService {
 
   logout() {
     // remove user from local storage to log user out
-    console.log('logged out: ' + JSON.stringify(localStorage.getItem('currentUser')));
-    localStorage.removeItem('currentUser');
+    console.log('logged out');
     localStorage.removeItem('jwt-token');
   }
 
