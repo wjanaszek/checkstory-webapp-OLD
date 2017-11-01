@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../shared/models/user.model';
-import { UserService } from '../shared/services/user-service';
 import { Router } from '@angular/router';
 import { fadeInAnimation } from '../shared/animations/fadeInAnimation';
 
@@ -12,23 +10,10 @@ import { fadeInAnimation } from '../shared/animations/fadeInAnimation';
 })
 export class HomeComponent implements OnInit {
 
-  currentUser: User;
-  users: User[] = [];
-
-  constructor(private userService: UserService, private router: Router) {
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
-    this.loadAllUsers();
-  }
-
-  deleteUser(id: number) {
-    this.userService.delete(id).subscribe(() => { this.loadAllUsers(); });
-  }
-
-  private loadAllUsers() {
-    this.userService.getAll().subscribe(users => { this.users = users; });
   }
 
   showRegisterForm() {
