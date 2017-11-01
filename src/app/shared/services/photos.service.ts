@@ -2,49 +2,36 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Photo } from '../models/photo.model';
 import { environment } from '../../../environments/environment';
-import { Http, Headers, URLSearchParams } from '@angular/http';
 import { PhotosList } from '../models/photos.list.model';
+import { AuthHttp } from 'angular2-jwt';
 
 @Injectable()
 export class PhotosService {
 
-  constructor(private http: Http) { }
+  constructor(private authHttp: AuthHttp) { }
 
   getAll(storyNumber: number): Observable<PhotosList> {
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    const requestParam = new URLSearchParams();
-    requestParam.append('userId', `${currentUser.id}`);
-    return this.http.get(environment.apiUrl + `/api/stories/${storyNumber}/photos`, { headers: headers, params: requestParam })
+    return this.authHttp.get(environment.apiUrl + `/api/stories/${storyNumber}/photos`)
       .map(res => res.json());
   }
 
   getById(photoNumber: number, storyNumber: number): Observable<Photo> {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.get(environment.apiUrl + `/api/stories/${storyNumber}/photos/${photoNumber}`, { headers: headers })
+    return this.authHttp.get(environment.apiUrl + `/api/stories/${storyNumber}/photos/${photoNumber}`)
       .map(res => res.json());
   }
 
   create(photo: Photo) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post(environment.apiUrl + `/api/stories/${photo.storyNumber}/photos`, JSON.stringify(photo), { headers: headers })
+    return this.authHttp.post(environment.apiUrl + `/api/stories/${photo.storyNumber}/photos`, JSON.stringify(photo))
       .map(res => res.json());
   }
 
   delete(photoNumber: number, storyNumber: number) {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.delete(environment.apiUrl + `/api/stories/${storyNumber}/photos/${photoNumber}`, { headers: headers })
+    return this.authHttp.delete(environment.apiUrl + `/api/stories/${storyNumber}/photos/${photoNumber}`)
       .map(res => res.json());
   }
 
   update(photo: Photo): Observable<Photo> {
-    const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.put(environment.apiUrl + `/api/stories/${photo.storyNumber}/photos/${photo.photoNumber}`, JSON.stringify(photo), { headers: headers })
+    return this.authHttp.put(environment.apiUrl + `/api/stories/${photo.storyNumber}/photos/${photo.photoNumber}`, JSON.stringify(photo))
       .map(res => res.json());
   }
 }
