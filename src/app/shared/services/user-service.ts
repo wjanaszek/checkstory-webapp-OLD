@@ -35,11 +35,11 @@ export class UserService {
     const hashedPassword = Md5.hashStr(user.password);
     const token = localStorage.getItem('jwt-token');
     const userId = this.jwtHelper.decodeToken(token).userId;
-    console.log('action: ' + JSON.stringify({
-      id: userId,
-      login: '',
-      email: '',
-      password: hashedPassword}));
+    // console.log('action: ' + JSON.stringify({
+    //   id: userId,
+    //   login: '',
+    //   email: '',
+    //   password: hashedPassword}));
     return this.authHttp.put(environment.apiUrl + `/api/users/${userId}`,
       JSON.stringify({
         id: userId,
@@ -47,7 +47,7 @@ export class UserService {
         email: '',
         password: hashedPassword
       }))
-      .map((response: Response) => response.json());
+      .subscribe((response: Response) => response.json());
   }
 
   delete(id: number) {
