@@ -7,6 +7,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { PasswordValidation } from '../../shared/password.validation';
 import { ChangePasswordActionModel } from '../../shared/models/change-password-action.model';
 import { ChangePasswordValidationService } from '../../shared/services/change-password.validation.service';
+import { User } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-myaccount',
@@ -35,8 +36,7 @@ export class MyAccountComponent implements OnInit {
   }
 
   changePassword(event) {
-    console.log(JSON.stringify(event));
-    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const user = new User();
     user.password = event.newPassword;
     this.userService.update(user);
   }
@@ -63,8 +63,7 @@ export class ChangePasswordDialogComponent {
     });
   }
 
-  private changePassword() {
-    console.log('changepassword dialog');
+  changePassword() {
     this.data(new ChangePasswordActionModel(
       this.changePasswordForm.get('oldPassword').value,
       this.changePasswordForm.get('newPassword').value)
@@ -72,8 +71,7 @@ export class ChangePasswordDialogComponent {
   }
 
   validateOldPassword(control: AbstractControl) {
-    // TODO biezacy user ze store (trzeba zrobic store) - tymczasowo z localStorage
-    return this.changePasswordValidationService.checkPassword(JSON.parse(localStorage.getItem('currentUser')).id, control.value)
+    return this.changePasswordValidationService.checkPassword(control.value)
       .map(res => {
         return res ? null : { passwordNotCorrect: true };
       });

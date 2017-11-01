@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
 import { environment } from '../../../environments/environment';
 import { Md5 } from 'ts-md5/dist/md5';
+import { AuthHttp, JwtHelper } from 'angular2-jwt';
 
 @Injectable()
 export class ChangePasswordValidationService {
 
-  constructor(private http: Http) { }
+  jwtHelper: JwtHelper = new JwtHelper();
 
-  checkPassword(id: number, password: string) {
-    const requestHeaders = new Headers({
-      'Content-Type': 'application/json'
-    });
+  constructor(private authHttp: AuthHttp) { }
+
+  checkPassword(password: string) {
     const hashedPassword = Md5.hashStr(password);
-    return this.http.post(environment.apiUrl + `/api/users/checkPassword/${id}`, hashedPassword, { headers: requestHeaders })
+    const token = localStorage.getItem('jwt-token');
+    const userId = this.jwtHelper.decodeToken(token).userId;
+    return this.authHttp.post(environment.apiUrl + `/api/users/checkPassword/${userId}`, hashedPassword)
       .map(res => res.json());
   }
 }

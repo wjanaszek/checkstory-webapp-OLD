@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.loginForm.get('login').value, this.loginForm.get('password').value)
       .subscribe(
         data => {
-          console.log('logged in user: ' + JSON.stringify(data));
+          console.log('logged in user');
           this.apiError = false;
           this.router.navigate(['dashboard/story-list']);
         },

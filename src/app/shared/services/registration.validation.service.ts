@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import { environment } from '../../../environments/environment';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
@@ -13,18 +12,6 @@ export class RegistrationValidationService {
   private emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
   constructor(private http: Http) { }
-
-  // check(emails: Observable<string>) {
-  //   return emails.debounceTime(300)
-  //     .distinctUntilChanged()
-  //     .switchMap(email => this.checkEmailAvailable(email));
-  // }
-  //
-  // checkEmailAvailable(email) {
-  //   this.http.get(environment.apiUrl + '/api/users/checkEmail', {
-  //     body: email
-  //   }).map(res => res.json());
-  // }
 
   checkEmailNotTaken(email: string) {
     const requestHeaders = new Headers({
