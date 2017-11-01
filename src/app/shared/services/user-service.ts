@@ -26,7 +26,6 @@ export class UserService {
     const hashedPassword = Md5.hashStr(user.password);
     const headers = new Headers();
     headers.append('Content-Type', 'Application/json');
-    console.log('hashed password: ' + hashedPassword);
     return this.http.post(environment.apiUrl + '/api/users', JSON.stringify({ login: user.login, email: user.email, password: hashedPassword }),
       { headers: headers })
       .map((response: Response) => response.json());   // TODO mail with token to finalize register
@@ -35,12 +34,17 @@ export class UserService {
   update(user: User) {
     const hashedPassword = Md5.hashStr(user.password);
     const token = localStorage.getItem('jwt-token');
-    console.log('updating: ' + JSON.stringify(this.jwtHelper.decodeToken(token)));
-    return this.authHttp.put(environment.apiUrl + `/api/users/${user.id}`,
+    const userId = this.jwtHelper.decodeToken(token).userId;
+    console.log('action: ' + JSON.stringify({
+      id: userId,
+      login: '',
+      email: '',
+      password: hashedPassword}));
+    return this.authHttp.put(environment.apiUrl + `/api/users/${userId}`,
       JSON.stringify({
-        id: user.id,
-        login: user.login,
-        email: user.email,
+        id: userId,
+        login: '',
+        email: '',
         password: hashedPassword
       }))
       .map((response: Response) => response.json());
