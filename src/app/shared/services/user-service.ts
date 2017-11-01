@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
-import { Http, Response } from '@angular/http';
+import { Http, Headers, Response } from '@angular/http';
 import { environment } from '../../../environments/environment';
 import { Md5 } from 'ts-md5/dist/md5';
 import { AuthHttp, JwtHelper } from 'angular2-jwt';
@@ -24,8 +24,11 @@ export class UserService {
 
   create(user: User) {
     const hashedPassword = Md5.hashStr(user.password);
+    const headers = new Headers();
+    headers.append('Content-Type', 'Application/json');
     console.log('hashed password: ' + hashedPassword);
-    return this.http.post(environment.apiUrl + '/api/users', JSON.stringify({ login: user.login, email: user.email, password: hashedPassword }))
+    return this.http.post(environment.apiUrl + '/api/users', JSON.stringify({ login: user.login, email: user.email, password: hashedPassword }),
+      { headers: headers })
       .map((response: Response) => response.json());   // TODO mail with token to finalize register
   }
 

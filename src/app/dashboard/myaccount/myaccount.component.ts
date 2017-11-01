@@ -7,6 +7,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { PasswordValidation } from '../../shared/password.validation';
 import { ChangePasswordActionModel } from '../../shared/models/change-password-action.model';
 import { ChangePasswordValidationService } from '../../shared/services/change-password.validation.service';
+import { User } from '../../shared/models/user.model';
 
 @Component({
   selector: 'app-myaccount',
@@ -36,7 +37,7 @@ export class MyAccountComponent implements OnInit {
 
   changePassword(event) {
     console.log(JSON.stringify(event));
-    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const user = new User();
     user.password = event.newPassword;
     this.userService.update(user);
   }

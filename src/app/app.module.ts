@@ -42,6 +42,7 @@ import { PhotosService } from './shared/services/photos.service';
 import { EditPhotoDialogComponent, PhotoListComponent, PhotoViewDialogComponent } from './dashboard/story-detail/photo-list/photo-list.component';
 import { NgProgressBrowserXhr, NgProgressModule } from 'ngx-progressbar';
 import { BrowserXhr } from '@angular/http';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { BrowserXhr } from '@angular/http';
   ],
   imports: [
     routing,
+    AuthModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
