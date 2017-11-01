@@ -20,7 +20,6 @@ export class UserService {
       .map((response: Response) => response.json());
   }
 
-  //release
   create(user: User) {
     const hashedPassword = Md5.hashStr(user.password);
     console.log('hashed password: ' + hashedPassword);
