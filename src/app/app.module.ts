@@ -12,7 +12,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './home/login/login.component';
 import { RegisterComponent } from './home/register/register.component';
 import { AuthenticationService } from './shared/services/authentication.service';
-import { fakeBackendProvider } from './helpers/fake-backend';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import {
@@ -95,7 +94,6 @@ import { BrowserXhr } from '@angular/http';
   providers: [
     UserService,
     AuthenticationService,
-    fakeBackendProvider,
     MockBackend,
     BaseRequestOptions,
     StoriesService,
