@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -44,6 +44,7 @@ import { NgProgressBrowserXhr, NgProgressModule } from 'ngx-progressbar';
 import { BrowserXhr } from '@angular/http';
 import { AuthModule } from './auth/auth.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { GlobalErrorHandler } from './error-page/global.error.handler';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     ChangePasswordValidationService,
     DialogsService,
     PhotosService,
-    { provide: BrowserXhr, useClass: NgProgressBrowserXhr }
+    { provide: BrowserXhr, useClass: NgProgressBrowserXhr },
+    { provide: ErrorHandler, useClass: GlobalErrorHandler }
   ],
   entryComponents: [
     ConfirmDialogComponent,

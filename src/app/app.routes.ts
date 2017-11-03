@@ -49,12 +49,12 @@ export const routes: Routes = [
     ]
   },
   {
-    path: '**',
-    component: PageNotFoundComponent
-  },
-  {
     path: 'error',
     component: ErrorPageComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent
   }
 ];
 
