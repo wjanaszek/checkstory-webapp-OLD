@@ -22,13 +22,13 @@ export class StoriesService {
 
   delete(id: number) {
     return this.authHttp.delete(environment.apiUrl + `/api/stories/${id}`)
-      .map(res => res.json());
+      .subscribe(res => res.json());
   }
 
-  update(story: Story): Observable<Story> {
+  update(story: Story) {
     console.log('story to update: ' + JSON.stringify(story));
     return this.authHttp.put(environment.apiUrl + `/api/stories/${story.id}`, JSON.stringify(story))
-      .map(res => res.json());
+      .subscribe((response: Response) => response.json());
   }
 
   add(story: Story) {
@@ -48,7 +48,7 @@ export class StoriesService {
       createDate: story.createDate,
       photos: []
     }))
-      .map((response: Response) => {
+      .subscribe((response: Response) => {
         const storyFromResponse = response.json();
         return storyFromResponse;
       });
