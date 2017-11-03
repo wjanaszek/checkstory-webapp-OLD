@@ -43,6 +43,7 @@ import { EditPhotoDialogComponent, PhotoListComponent, PhotoViewDialogComponent 
 import { NgProgressBrowserXhr, NgProgressModule } from 'ngx-progressbar';
 import { BrowserXhr } from '@angular/http';
 import { AuthModule } from './auth/auth.module';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { AuthModule } from './auth/auth.module';
     PhotoListComponent,
     AddPhotoDialogComponent,
     EditPhotoDialogComponent,
-    PhotoViewDialogComponent
+    PhotoViewDialogComponent,
+    ErrorPageComponent
   ],
   imports: [
     routing,

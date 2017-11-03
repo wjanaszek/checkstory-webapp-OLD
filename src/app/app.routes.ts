@@ -12,6 +12,7 @@ import { StoriesComponent } from './dashboard/stories/stories.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { StoryDetailEditComponent } from './dashboard/story-detail/story-detail.edit/story-detail.edit.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 export const routes: Routes = [
   {
@@ -50,6 +51,10 @@ export const routes: Routes = [
   {
     path: '**',
     component: PageNotFoundComponent
+  },
+  {
+    path: 'error',
+    component: ErrorPageComponent
   }
 ];
 

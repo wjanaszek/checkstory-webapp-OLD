@@ -124,7 +124,8 @@ export class AddPhotoDialogComponent {
     this.data.addPhoto(new Photo(
       this.data.storyNumber,
       this.data.owner_id,
-      `${this.addPhotoForm.get('isOriginal').value}`,
+      'true',
+      // `${this.addPhotoForm.get('isOriginal').value}`,
       // this.addPhotoForm.get('originalPhoto').value,
       // this.addPhotoForm.get('photo').value.createDate,
   ﻿   '2017-10-21 00:00:00',
