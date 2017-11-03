@@ -12,7 +12,7 @@ export class PageNotFoundComponent implements OnInit {
   ngOnInit() {
   }
 
-  goDashboad() {
+  goDashboard() {
     this.router.navigate(['/dashboard/story-list']);
   }
 }
