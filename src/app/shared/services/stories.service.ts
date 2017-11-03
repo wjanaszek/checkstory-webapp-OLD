@@ -4,11 +4,12 @@ import { Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../../environments/environment';
 import { AuthHttp} from 'angular2-jwt';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class StoriesService {
 
-  constructor(private authHttp: AuthHttp) { }
+  constructor(private authHttp: AuthHttp, private router: Router) { }
 
   getAll(): Observable<Story[]> {
     return this.authHttp.get(environment.apiUrl + '/api/stories')
@@ -22,13 +23,17 @@ export class StoriesService {
 
   delete(id: number) {
     return this.authHttp.delete(environment.apiUrl + `/api/stories/${id}`)
-      .subscribe(res => res.json());
+      .subscribe(
+        (res) => res.json(),
+        (err) => this.router.navigate(['/error']));
   }
 
   update(story: Story) {
     console.log('story to update: ' + JSON.stringify(story));
     return this.authHttp.put(environment.apiUrl + `/api/stories/${story.id}`, JSON.stringify(story))
-      .subscribe((response: Response) => response.json());
+      .subscribe(
+        (res) => res.json(),
+        (err) => this.router.navigate(['/error']));
   }
 
   add(story: Story) {
@@ -48,9 +53,8 @@ export class StoriesService {
       createDate: story.createDate,
       photos: []
     }))
-      .subscribe((response: Response) => {
-        const storyFromResponse = response.json();
-        return storyFromResponse;
-      });
+      .subscribe(
+        (res) => res.json(),
+        (err) => this.router.navigate(['/error']));
   }
 }

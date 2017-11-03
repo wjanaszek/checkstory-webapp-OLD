@@ -4,13 +4,14 @@ import { Http, Headers, Response } from '@angular/http';
 import { environment } from '../../../environments/environment';
 import { Md5 } from 'ts-md5/dist/md5';
 import { AuthHttp, JwtHelper } from 'angular2-jwt';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UserService {
 
   jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(private authHttp: AuthHttp, private http: Http) { }
+  constructor(private authHttp: AuthHttp, private http: Http, private router: Router) { }
 
   getAll() {
     return this.authHttp.get(environment.apiUrl + '/api/users')
@@ -48,11 +49,15 @@ export class UserService {
         email: '',
         password: hashedPassword
       }))
-      .subscribe((response: Response) => response.json());
+      .subscribe(
+        (res) => res.json(),
+        (err) => this.router.navigate(['/error']));
   }
 
   delete(id: number) {
     return this.authHttp.delete(environment.apiUrl + `/api/users/${id}`)
-      .map((response: Response) => response.json());
+      .subscribe(
+        (res) => res.json(),
+        (err) => this.router.navigate(['/error']));
   }
 }
