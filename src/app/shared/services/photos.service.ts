@@ -48,14 +48,19 @@ export class PhotosService {
         (err) => this.router.navigate(['/error']));
   }
 
-  compare(originalPhotoId: number, modifiedPhotoId) {
+  /**
+   * Returns Observable of base64 encoded image
+   * @param {number} originalPhotoId
+   * @param {number} modifiedPhotoId
+   * @returns {Observable<string>}
+   */
+  compare(originalPhotoId: number, modifiedPhotoId: number): Observable<string> {
     const payload: ImagesComparePayload = {
       originalImageId: originalPhotoId,
       modifiedImageId: modifiedPhotoId
     };
+    console.log('compare payload: ' + JSON.stringify(payload));
     return this.authHttp.post(environment.apiUrl + '/api/images-compare', JSON.stringify(payload))
-      .subscribe(
-        (res) => res.json(),
-        (err) => this.router.navigate(['/error']));
+      .map((res) => res.json());
   }
 }
