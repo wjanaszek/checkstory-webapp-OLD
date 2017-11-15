@@ -14,17 +14,6 @@ import { RegisterComponent } from './home/register/register.component';
 import { AuthenticationService } from './shared/services/authentication.service';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
-import {
-  MatButtonModule, MatCardModule, MatDatepickerModule,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule, MatNativeDateModule, MatProgressSpinnerModule,
-  MatTabsModule,
-  MatTooltipModule,
-  MatCheckboxModule, MatIconModule
-} from '@angular/material';
 import { routing } from './app.routes';
 import { WelcomeComponent } from './home/welcome/welcome.component';
 import { ChangePasswordDialogComponent, MyAccountComponent } from './dashboard/myaccount/myaccount.component';
@@ -45,6 +34,8 @@ import { BrowserXhr } from '@angular/http';
 import { AuthModule } from './auth/auth.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { GlobalErrorHandler } from './error-page/global.error.handler';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MaterialModule } from './material/material.module';
 
 @NgModule({
   declarations: [
@@ -75,22 +66,10 @@ import { GlobalErrorHandler } from './error-page/global.error.handler';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatTooltipModule,
-    MatListModule,
-    MatDialogModule,
-    MatTabsModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    MatMenuModule,
-    MatProgressSpinnerModule,
+    MaterialModule,
     ReactiveFormsModule,
     HttpModule,
+    FlexLayoutModule,
     NgProgressModule
   ],
   exports: [
