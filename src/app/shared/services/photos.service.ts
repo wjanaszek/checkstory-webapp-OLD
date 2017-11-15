@@ -6,6 +6,11 @@ import { PhotosList } from '../models/photos.list.model';
 import { AuthHttp } from 'angular2-jwt';
 import { Router } from '@angular/router';
 
+interface ImagesComparePayload {
+  originalImageId: number,
+  modifiedImageId: number
+}
+
 @Injectable()
 export class PhotosService {
 
@@ -22,6 +27,7 @@ export class PhotosService {
   }
 
   create(photo: Photo) {
+    console.log(JSON.stringify(photo));
     return this.authHttp.post(environment.apiUrl + `/api/stories/${photo.storyNumber}/photos`, JSON.stringify(photo))
       .subscribe(
         (res) => res.json(),
@@ -37,6 +43,17 @@ export class PhotosService {
 
   update(photo: Photo) {
     return this.authHttp.put(environment.apiUrl + `/api/stories/${photo.storyNumber}/photos/${photo.photoNumber}`, JSON.stringify(photo))
+      .subscribe(
+        (res) => res.json(),
+        (err) => this.router.navigate(['/error']));
+  }
+
+  compare(originalPhotoId: number, modifiedPhotoId) {
+    const payload: ImagesComparePayload = {
+      originalImageId: originalPhotoId,
+      modifiedImageId: modifiedPhotoId
+    };
+    return this.authHttp.post(environment.apiUrl + '/api/images-compare', JSON.stringify(payload))
       .subscribe(
         (res) => res.json(),
         (err) => this.router.navigate(['/error']));

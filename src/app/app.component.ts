@@ -11,11 +11,5 @@ import { fadeInAnimation } from './shared/animations/fadeInAnimation';
 export class AppComponent {
   title = 'Checkstory';
 
-  private user: User;
-
   constructor() { }
-
-  hasLoggedInUser(): boolean {
-    return false;
-  }
 }

@@ -7,11 +7,11 @@ export class GlobalErrorHandler implements ErrorHandler {
   private router: Router;
 
   constructor(private injector: Injector) {
-    setTimeout(() => this.router = injector.get(Router));
+    //setTimeout(() => this.router = injector.get(Router));
   }
 
   handleError(error) {
-    console.log('ERROR = ' + JSON.stringify(error));
+    // console.log('ERROR = ' + JSON.stringify(error));
 
     this.router.navigate(['/error']);
     // throw error;

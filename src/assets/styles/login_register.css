@@ -24,3 +24,34 @@
 .register_page .signup_btn {
   width: 50%;
 }
+
+.home_page {
+  width: 70%;
+  height: 300px;
+}
+
+.home_page .register_login_btn {
+  border-radius: 15px;
+  margin-right: 30px;
+  margin-top: 150px;
+  background-color: coral;
+  color: white;
+}
+
+.toolbar_fill_space {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+.body {
+  width: 100%;
+}
+
+.mat-toolbar {
+  width: 100%;
+}
+
+.content {
+  width: 1000px;
+}

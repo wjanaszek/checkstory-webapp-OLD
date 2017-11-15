@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <div>
+    <span>Checkstory</span>
+  </div>
+
+  <!-- fill remaing space -->
+  <span class="toolbar_fill_space"></span>
+
+  <div *ngIf="isLoggedIn(); else notLoggedIn">
+    <span>Actions</span>
+  </div>
+  <ng-template #notLoggedIn>
+    <button mat-button type="button">Log in</button>
+    <span> or </span>
+    <button mat-button type="button">Register</button>
+  </ng-template>
+</mat-toolbar>

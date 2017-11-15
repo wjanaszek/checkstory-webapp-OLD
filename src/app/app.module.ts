@@ -36,6 +36,8 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { GlobalErrorHandler } from './error-page/global.error.handler';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from './material/material.module';
+import { MessageService } from './shared/services/message.service';
+import { ToolbarComponent } from './shared/toolbar/toolbar.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,8 @@ import { MaterialModule } from './material/material.module';
     AddPhotoDialogComponent,
     EditPhotoDialogComponent,
     PhotoViewDialogComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    ToolbarComponent
   ],
   imports: [
     routing,
@@ -87,8 +90,8 @@ import { MaterialModule } from './material/material.module';
     ChangePasswordValidationService,
     DialogsService,
     PhotosService,
-    { provide: BrowserXhr, useClass: NgProgressBrowserXhr },
-    { provide: ErrorHandler, useClass: GlobalErrorHandler }
+    MessageService,
+    { provide: BrowserXhr, useClass: NgProgressBrowserXhr }
   ],
   entryComponents: [
     ConfirmDialogComponent,

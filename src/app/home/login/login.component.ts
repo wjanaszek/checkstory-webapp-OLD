@@ -1,10 +1,8 @@
-import {Component, Input, OnChanges, OnInit} from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../../shared/services/authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { fadeInAnimation } from '../../shared/animations/fadeInAnimation';
-import { errorObject } from 'rxjs/util/errorObject';
-// import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-login',
@@ -33,9 +31,6 @@ export class LoginComponent implements OnInit {
 
     // reset login status
     this.authenticationService.logout();
-
-    // get return url from route parameters or default to '/'
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   login() {

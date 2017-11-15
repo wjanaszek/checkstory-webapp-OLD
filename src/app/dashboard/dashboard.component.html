@@ -1,3 +1,4 @@
+<app-toolbar></app-toolbar>
 <nav mat-tab-nav-bar>
   <a mat-tab-link
      class="navbar-brand home"
@@ -26,7 +27,7 @@
     [matMenuTriggerFor]="logoutMenu">
     <i class="material-icons">account_circle</i>
   </button>
-  <mat-menu #logoutMenu="matMenu">
+  <mat-menu #logoutMenu="matMenu" [overlapTrigger]="false">
     <button mat-menu-item (click)="openChangePasswordDialog()">Change password</button>
     <button mat-menu-item (click)="openConfirmDialog()">Logout</button>
   </mat-menu>
