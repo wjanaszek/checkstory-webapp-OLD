@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { Photo } from '../../../shared/models/photo.model';
 import { ActivatedRoute } from '@angular/router';
 import { PhotosService } from '../../../shared/services/photos.service';
@@ -6,26 +6,41 @@ import { PhotosList } from '../../../shared/models/photos.list.model';
 import { DialogsService } from '../../../shared/services/dialogs.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MessageService } from '../../../shared/services/message.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-photo-list',
   templateUrl: './photo-list.component.html'
 })
-export class PhotoListComponent implements OnInit {
+export class PhotoListComponent implements OnInit, OnDestroy {
 
   storyPhotos: Photo[] = [];
   storyId: number;
+  comparing: boolean;
+  subscription: Subscription;
+  private compareImagesList: number[] = [];
 
   constructor(private route: ActivatedRoute,
               private photosService: PhotosService,
+              private messageService: MessageService,
               private dialogsService: DialogsService,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog) {
+    this.comparing = false;
+    this.subscription = this.messageService.getMessage().subscribe(msg => {
+      this.comparing = msg.data.data;
+    });
+  }
 
   ngOnInit() {
     this.route.params.subscribe(params => this.storyId = +params['id']);
     this.photosService.getAll(this.storyId).subscribe(data => {
       this.prepareImages(data);
     });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   openEditPhotoDialog(photo: Photo) {
@@ -52,6 +67,18 @@ export class PhotoListComponent implements OnInit {
     this.dialog.open(PhotoViewDialogComponent, {
       data: photo
     });
+  }
+
+  addToCompareList(event, id: number) {
+    if (event.checked && this.compareImagesList.indexOf(id) === -1) {
+      this.compareImagesList.push(id);
+    } else if (!event.checked) {
+      this.compareImagesList.splice(this.compareImagesList.indexOf(id));
+    }
+  }
+
+  isOriginal(photo: Photo): boolean {
+    return photo.originalPhoto === 't';
   }
 
   private updatePhoto(event) {

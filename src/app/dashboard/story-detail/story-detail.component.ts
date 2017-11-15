@@ -7,6 +7,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PhotosService } from '../../shared/services/photos.service';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material';
 import { Photo } from '../../shared/models/photo.model';
+import { MessageService } from '../../shared/services/message.service';
 
 @Component({
   selector: 'app-story-detail',
@@ -17,15 +18,18 @@ export class StoryDetailComponent implements OnInit {
   story: Story;
   editing: boolean;
   storyDetailForm: FormGroup;
+  comparing: boolean;
 
   constructor(private route: ActivatedRoute,
               private router: Router,
               private dialogsService: DialogsService,
+              private messageService: MessageService,
               private fb: FormBuilder,
               private storiesService: StoriesService,
               private photosService: PhotosService,
               public dialog: MatDialog) {
     this.editing = false;
+    this.comparing = false;
     this.story = new Story();
   }
 
@@ -60,6 +64,14 @@ export class StoryDetailComponent implements OnInit {
         owner_id: this.story.owner.id
       }
     });
+  }
+
+  compareOptionChange(event) {
+    if (event.checked) {
+      this.messageService.sendMessage({ data: true });
+    } else {
+      this.messageService.sendMessage({ data: false });
+    }
   }
 
   private initFormAndSetValues() {
