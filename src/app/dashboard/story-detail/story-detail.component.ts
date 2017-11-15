@@ -103,6 +103,7 @@ export class AddPhotoDialogComponent {
 
   addPhotoForm: FormGroup;
   loading: boolean = false;
+  originalPhoto: boolean;
 
   @ViewChild('fileInput')
   fileInput: ElementRef;
@@ -136,7 +137,7 @@ export class AddPhotoDialogComponent {
     this.data.addPhoto(new Photo(
       this.data.storyNumber,
       this.data.owner_id,
-      'true',
+      `${this.originalPhoto}`,
       // `${this.addPhotoForm.get('isOriginal').value}`,
       // this.addPhotoForm.get('originalPhoto').value,
       // this.addPhotoForm.get('photo').value.createDate,
@@ -146,6 +147,10 @@ export class AddPhotoDialogComponent {
       this.addPhotoForm.get('photo').value.content
     ));
     this.dialogRef.close();
+  }
+
+  onIsOriginalChange(event) {
+    this.originalPhoto = event.checked;
   }
 
   clearFile() {

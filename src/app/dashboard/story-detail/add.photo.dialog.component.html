@@ -5,7 +5,13 @@
   <form novalidate [formGroup]="addPhotoForm">
     Browse:
     <input type="file" accept=".jpg, .png, .jpeg" (change)="onFileChange($event)" #fileInput/>
-    <mat-checkbox [disabled]="data.isOriginal" formControlName="isOriginal" color="primary">Original</mat-checkbox>
+    <mat-checkbox
+      [disabled]="data.isOriginal"
+      (change)="onIsOriginalChange($event)"
+      formControlName="isOriginal"
+      color="primary">
+      Original
+    </mat-checkbox>
     <div *ngIf="data.isOriginal">
       There is original photo already
     </div>
