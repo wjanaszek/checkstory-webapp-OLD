@@ -1,35 +1,5 @@
-<app-toolbar></app-toolbar>
-<nav mat-tab-nav-bar>
-  <a mat-tab-link
-     class="navbar-brand home"
-     [routerLink]="['story-list']"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    Checkstory
-  </a>
-  <a mat-tab-link
-     class="navbar-brand home"
-     [routerLink]="['myaccount']"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    My account
-  </a>
-  <a mat-tab-link
-     class="navbar-brand home"
-     [routerLink]="['about']"
-     routerLinkActive #rla="routerLinkActive"
-     [active]="rla.isActive">
-    About
-  </a>
-  <button
-    mat-icon-button
-    type="button"
-    [matMenuTriggerFor]="logoutMenu">
-    <i class="material-icons">account_circle</i>
-  </button>
-  <mat-menu #logoutMenu="matMenu" [overlapTrigger]="false">
-    <button mat-menu-item (click)="openChangePasswordDialog()">Change password</button>
-    <button mat-menu-item (click)="openConfirmDialog()">Logout</button>
-  </mat-menu>
-</nav>
+<app-toolbar
+  (logoutAction)="openConfirmDialog()"
+  (changePasswordAction)="openChangePasswordDialog()">
+</app-toolbar>
 <router-outlet></router-outlet>

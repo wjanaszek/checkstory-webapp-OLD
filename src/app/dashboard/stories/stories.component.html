@@ -1,5 +1,6 @@
 <div class="col-md-12">
   <mat-list>
+    <h3 mat-subheader>Stories</h3>
     <mat-list-item *ngFor="let story of stories | async">
       <!--<img class="tn" width="15" height="10" [src]="'data:image/' + getOriginalStoryPhoto(story).imageType + ';base64,' + getOriginalStoryPhoto(story).content">-->
       <mat-icon matListIcon (click)="goToStoryDetails(story.id)">folder</mat-icon>
