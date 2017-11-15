@@ -1,22 +1,24 @@
 <mat-list>
   <mat-list-item *ngFor="let photo of storyPhotos; let i = index">
     <img [src]="'data:image/' + photo.imageType + ';base64,' + photo.content" width="75" height="45" (click)="openBigPhoto(photo)">
-    <h3 matLine (click)="openBigPhoto(photo)" matTooltip="Show photo">
-      <div *ngIf="comparing && !isOriginal(photo)">
+    <h3 matLine>
+      <span *ngIf="comparing && !isOriginal(photo)">
         <mat-checkbox
           [align]="'start'"
           color="primary"
           (change)="addToCompareList($event, photo.photoNumber)">
         </mat-checkbox>
-      </div>
-      <div *ngIf="comparing && isOriginal(photo)">
+      </span>
+      <span *ngIf="comparing && isOriginal(photo)">
         <mat-checkbox
           [align]="'start'"
           color="primary"
           checked="true">
         </mat-checkbox>
-      </div>
-      Photo no {{ i + 1 }} <span *ngIf="photo.originalPhoto === 't'"><strong>[ORIGINAL]</strong></span>
+      </span>
+      <span (click)="openBigPhoto(photo)" matTooltip="Show photo">
+        Photo no {{ i + 1 }} <span *ngIf="photo.originalPhoto === 't'"><strong>[ORIGINAL]</strong></span>
+      </span>
     </h3>
     <button mat-button type="button" (click)="openEditPhotoDialog(photo)">
       <i class="material-icons">mode_edit</i>
