@@ -6,7 +6,7 @@
     Browse:
     <input type="file" accept=".jpg, .png, .jpeg" (change)="onFileChange($event)" #fileInput/>
     <mat-checkbox
-      [disabled]="data.isOriginal"
+      [disabled]="false"
       (change)="onIsOriginalChange($event)"
       formControlName="isOriginal"
       color="primary">

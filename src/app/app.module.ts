@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { ChangePasswordDialogComponent, DashboardComponent } from './dashboard/dashboard.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddStoryDialogComponent, StoriesComponent } from './dashboard/stories/stories.component';
 import { UserService } from './shared/services/user-service';
@@ -16,7 +16,7 @@ import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { routing } from './app.routes';
 import { WelcomeComponent } from './home/welcome/welcome.component';
-import { ChangePasswordDialogComponent, MyAccountComponent } from './dashboard/myaccount/myaccount.component';
+import { MyAccountComponent } from './dashboard/myaccount/myaccount.component';
 import { AddPhotoDialogComponent, StoryDetailComponent } from './dashboard/story-detail/story-detail.component';
 import { AboutComponent } from './dashboard/about/about.component';
 import { StoriesService } from './shared/services/stories.service';

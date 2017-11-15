@@ -81,6 +81,10 @@ export class PhotoListComponent implements OnInit, OnDestroy {
     return photo.originalPhoto === 't';
   }
 
+  compareImages() {
+    this.photosService.compare(this.compareImagesList[0], this.compareImagesList[1]);
+  }
+
   private updatePhoto(event) {
     this.photosService.update(event);
   }

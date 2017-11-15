@@ -37,7 +37,7 @@ export class PhotosService {
   delete(photoNumber: number, storyNumber: number) {
     return this.authHttp.delete(environment.apiUrl + `/api/stories/${storyNumber}/photos/${photoNumber}`)
       .subscribe(
-        (res) => res.json(),
+        (res) => console.log('deleted'),
         (err) => this.router.navigate(['/error']));
   }
 

@@ -1,30 +1,37 @@
-<mat-list>
-  <mat-list-item *ngFor="let photo of storyPhotos; let i = index">
-    <img [src]="'data:image/' + photo.imageType + ';base64,' + photo.content" width="75" height="45" (click)="openBigPhoto(photo)">
-    <h3 matLine>
-      <span *ngIf="comparing && !isOriginal(photo)">
-        <mat-checkbox
-          [align]="'start'"
-          color="primary"
-          (change)="addToCompareList($event, photo.photoNumber)">
-        </mat-checkbox>
-      </span>
-      <span *ngIf="comparing && isOriginal(photo)">
-        <mat-checkbox
-          [align]="'start'"
-          color="primary"
-          checked="true">
-        </mat-checkbox>
-      </span>
-      <span (click)="openBigPhoto(photo)" matTooltip="Show photo">
-        Photo no {{ i + 1 }} <span *ngIf="photo.originalPhoto === 't'"><strong>[ORIGINAL]</strong></span>
-      </span>
-    </h3>
-    <button mat-button type="button" (click)="openEditPhotoDialog(photo)">
-      <i class="material-icons">mode_edit</i>
+<div class="col-md-12">
+  <mat-list>
+    <mat-list-item *ngFor="let photo of storyPhotos; let i = index">
+      <img [src]="'data:image/' + photo.imageType + ';base64,' + photo.content" width="75" height="45" (click)="openBigPhoto(photo)">
+      <h3 matLine>
+        <span *ngIf="comparing && !isOriginal(photo)">
+          <mat-checkbox
+            [align]="'start'"
+            color="primary"
+            (change)="addToCompareList($event, photo.photoNumber)">
+          </mat-checkbox>
+        </span>
+        <span *ngIf="comparing && isOriginal(photo)">
+          <mat-checkbox
+            [align]="'start'"
+            color="primary"
+            checked="true">
+          </mat-checkbox>
+        </span>
+        <span (click)="openBigPhoto(photo)" matTooltip="Show photo">
+          Photo no {{ i + 1 }} <span *ngIf="photo.originalPhoto === 't'"><strong>[ORIGINAL]</strong></span>
+        </span>
+      </h3>
+      <button mat-button type="button" (click)="openEditPhotoDialog(photo)">
+        <i class="material-icons">mode_edit</i>
+      </button>
+      <button mat-button type="button" (click)="openRemovePhotoDialog(photo)">
+        <i class="material-icons">clear</i>
+      </button>
+    </mat-list-item>
+  </mat-list>
+  <div *ngIf="compareImagesList.length === 2">
+    <button mat-button type="button" (click)="compareImages()">
+      <mat-icon>compare_arrows</mat-icon> Compare
     </button>
-    <button mat-button type="button" (click)="openRemovePhotoDialog(photo)">
-      <i class="material-icons">clear</i>
-    </button>
-  </mat-list-item>
-</mat-list>
+  </div>
+</div>
