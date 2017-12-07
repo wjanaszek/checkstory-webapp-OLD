@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 
 interface ImagesComparePayload {
   originalImageId: number,
-  modifiedImageId: number
+  modifiedImageId: number,
+  resize: boolean,
+  boundingRectangles: boolean
 }
 
 @Injectable()
@@ -57,7 +59,10 @@ export class PhotosService {
   compare(originalPhotoId: number, modifiedPhotoId: number): Observable<string> {
     const payload: ImagesComparePayload = {
       originalImageId: originalPhotoId,
-      modifiedImageId: modifiedPhotoId
+      modifiedImageId: modifiedPhotoId,
+      // @TODO add this options from checkbox in popup
+      resize: false,
+      boundingRectangles: false
     };
     console.log('compare payload: ' + JSON.stringify(payload));
     return this.authHttp.post(environment.apiUrl + '/api/images-compare', JSON.stringify(payload))
